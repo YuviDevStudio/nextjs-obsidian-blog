@@ -1,0 +1,71 @@
+import { getAllPostIds, getPostData } from '../../../lib/posts';
+import Date from '../../components/date';
+import utilStyles from '../../../styles/utils.module.css';
+
+import Link from 'next/link';
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { prism } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+
+const CodeBlock = ({ language, codestring }) => {
+  return (
+    <SyntaxHighlighter language={language} style={prism} PreTag="div">
+      {codestring}
+    </SyntaxHighlighter>
+  )
+}
+
+export async function generateMetadata({ params }) {
+  const resolvedParams = await params;
+  const postData = await getPostData(resolvedParams.id);
+  return {
+    title: postData.title,
+  };
+}
+
+export default async function Post({ params }) {
+  const resolvedParams = await params;
+  const postData = await getPostData(resolvedParams.id);
+  return (
+    <>
+      <article>
+        <h1 className={utilStyles.headingXl}>{postData.title}</h1>
+        <div className={utilStyles.lightText}>
+          <Date dateString={postData.date} />
+        </div>
+
+        <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
+        components={{
+          a: ({node, ...props}) => <Link href={props.href} {...props} />,
+          code({node, inline, className, children, ...props}) {
+            const match = /language-(\w+)/.exec(className || '')
+            return !inline && match ? (
+              <CodeBlock
+                codestring={String(children).replace(/\n$/, '')}
+                language={match[1]}
+              />
+            ) : (
+              <code className={className} {...props}>
+                {children}
+              </code>
+            )
+          }
+        }}>
+          {postData.content}
+        </ReactMarkdown>
+
+        {/* <div dangerouslySetInnerHTML={{ __html: postData.content }} /> */}
+      </article>
+    </>
+  );
+}
+
+export async function generateStaticParams() {
+  return [
+    { id: 'a-blog-post' },
+    { id: 'another-blog-post' },
+    { id: 'yet-another-blog-post' },
+  ];
+}
