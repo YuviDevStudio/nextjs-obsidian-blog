@@ -8,19 +8,14 @@ export default function Page() {
   const allPostsData = getSortedPostsData();
   return (
     <>
-      <section className={utilStyles.headingMd}>
-        <p style={{fontSize: "0.9rem"}}>
-          Some introductory text.
-        </p>
-      </section>
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
-        <ul className={utilStyles.list}>
+      <section>
+        <h2 className='text-bold'>Blog</h2>
+        <ul>
           {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
+            <li key={id}>
               <Link href={`/${id}`}>{title}</Link>
               <br />
-              <small className={utilStyles.lightText}>
+              <small className='text-gray-600'>
                 <Date dateString={date} />
               </small>
             </li>

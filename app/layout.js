@@ -13,7 +13,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <Navbar />
-        {children}
+        <div className="flex flex-row justify-center max-w-[1200px] mx-auto">
+          {children}
+        </div>
       </body>
     </html>
   );

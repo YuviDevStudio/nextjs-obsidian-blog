@@ -1,5 +1,6 @@
 import { getAllPostIds, getPostData } from '../../../lib/posts';
 import Date from '../../components/date';
+
 import utilStyles from '../../../styles/utils.module.css';
 
 import Link from 'next/link';
@@ -30,8 +31,8 @@ export default async function Post({ params }) {
   return (
     <>
       <article>
-        <h1 className={utilStyles.headingXl}>{postData.title}</h1>
-        <div className={utilStyles.lightText}>
+        <h1 className='text-3xl font-bold'>{postData.title}</h1>
+        <div className='text-gray-600'>
           <Date dateString={postData.date} />
         </div>
 
@@ -63,9 +64,6 @@ export default async function Post({ params }) {
 }
 
 export async function generateStaticParams() {
-  return [
-    { id: 'a-blog-post' },
-    { id: 'another-blog-post' },
-    { id: 'yet-another-blog-post' },
-  ];
+  const allPostIds = getAllPostIds();
+  return allPostIds;
 }
