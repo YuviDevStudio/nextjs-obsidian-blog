@@ -1,6 +1,11 @@
 ---
 title: 'Yet another blog post'
+description: 'This is yet another blog post created from Obsidian'
 date: '2024-02-01'
+tags: 
+    - "noticias"
+    - "programacion"
+featured_image: /images/test_image_1.jpg
 ---
 
 Write your text here.

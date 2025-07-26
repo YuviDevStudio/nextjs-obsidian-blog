@@ -1,6 +1,11 @@
 ---
 title: A blog post
+descroption: This is a blog post created from Obsidian
 date: 2023-12-23
+tags: 
+    - "noticias"
+    - "programacion"
+featured_image: /images/test_image_1.jpg
 ---
 Write your text here.
 Hola Tuta
