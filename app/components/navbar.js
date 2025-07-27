@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Navbar() {
   return (
-    <nav className="sticky top-0 bg-gray-100 p-2 shadow-md">
+    <nav className="sticky top-0 bg-gray-100 p-2 shadow-md z-50">
       <div className="flex justify-between items-center z-10 max-w-[1200px] mx-auto">
         <Link className="cursor-pointer !no-underline text-xl font-bold" href="/">
           J<span className='text-black italic'>ota</span>EDRA

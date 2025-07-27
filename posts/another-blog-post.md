@@ -3,7 +3,7 @@ title: 'Another Blog Post'
 description: 'This description of what this is another blog post created from Obsidian This description of what this is another blog post created from Obsidian'
 date: '2024-01-15'
 tags: ["salud", "tecnologia"]
-featured_image: /images/test_image_1.jpg
+featured_image: /images/dog_image_2.jpg
 ---
 
 Write your text here.

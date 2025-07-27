@@ -2,14 +2,16 @@
 import { getSortedPostsData } from '../lib/posts';
 import Link from 'next/link';
 import Date from './components/date';
-import utilStyles from '../styles/utils.module.css';
+import Image from 'next/image';
+import FeaturedPosts from './components/featuredPosts';
 
 export default function Page() {
   const allPostsData = getSortedPostsData();
   return (
     <>
       <section>
-        <h2 className='text-bold text-center'>Welcome to JotaEDRA's Blog!</h2>
+        <h2 className='text-bold text-center mt-2 mb-6'>Bienvenidos al Blog de JotaEDRA</h2>
+        <FeaturedPosts />
         <ul>
           {allPostsData.map(({ id, date, title, description, tags, featured_image }) => (
             <li key={id}>
@@ -20,7 +22,7 @@ export default function Page() {
                 <p className='text-gray-600 text-[12px] mb-1'>
                 <Date dateString={date} />
               </p>
-                <p className='text-gray-600 text-[12px] mb-1'>
+                <p className='text-gray-600 text-[12px] mb-4'>
                   {tags && tags.map((tag, index) => (
                     <span key={index} className='mr-2'>#{tag}</span>
                   ))}
@@ -29,7 +31,7 @@ export default function Page() {
                 </div>
                 <div>
                 {featured_image && (
-                  <img src={featured_image} alt={title} className='h-[140px] w-[300px]' />
+                  <Image src={featured_image} alt={title} width={300} height={140} className='w-[300px] h-[140px] overflow-hidden object-cover' />
                 )}
                 </div>
               </div>

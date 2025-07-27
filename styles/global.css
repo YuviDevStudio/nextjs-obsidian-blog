@@ -42,3 +42,7 @@ code {
   font-size: 0.8rem !important;
   line-height: 1rem;
 } 
+
+.gradient-overlay {
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+}
