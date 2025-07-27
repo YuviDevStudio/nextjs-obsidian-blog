@@ -24,14 +24,14 @@ export default function Page() {
                 <p className='text-gray-600 text-[12px] mb-1'>
                 <Date dateString={date} />
               </p>
-                <p className='text-gray-600 text-[12px] mb-4'>
+                <p className='text-gray-600 text-[12px] mb-1 md:mb-4'>
                   {tags && tags.map((tag, index) => (
                     <span key={index} className='mr-2'>#{tag}</span>
                   ))}
                 </p>
                 <p className="text-gray-600 text-[14px] max-w-[345px]">{description}</p>
                 </div>
-                <div className="mt-4 md:mt-0">
+                <div className="mt-1 md:mt-0">
                 {featured_image && (
                   <Image src={featured_image} alt={title} width={365} height={140} className='w-[365px] h-[140px] overflow-hidden object-cover' />
                 )}
