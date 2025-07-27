@@ -1,10 +1,8 @@
 ---
 title: 'Yet another blog post'
-description: 'This is yet another blog post created from Obsidian'
+description: 'This description of what this is yet another blog post created from Obsidian This description of what this is a test post created from Obsidian'
 date: '2024-02-01'
-tags: 
-    - "noticias"
-    - "programacion"
+tags: ["salud", "tecnologia"]
 featured_image: /images/test_image_1.jpg
 ---
 
