@@ -11,7 +11,7 @@ const FeaturedPosts = () => {
         <section className='flex flex-row overflow-x-auto whitespace-nowrap items-center mx-auto justify-start w-screen lg:w-full no-scrollbar'>
             {featuredPosts.map(({ id, title, featured_image }) => {
                 return (
-                    <div key={id} className='relative w-[300px] h-76 m-2 mb-9 flex-shrink-0'>
+                    <div key={id} className='relative w-[300px] h-76 m-2 mb-4 flex-shrink-0'>
                         <Link href={`/${id}`}>
                             <Image
                                 src={featured_image}
