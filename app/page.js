@@ -18,7 +18,7 @@ export default function Page() {
           {allPostsData.map(({ id, date, title, description, tags, featured_image }) => (
             <li key={id}>
               <Link href={`/${id}`} className='!no-underline'>
-              <div className='flex flex-col md:flex-row justify-center items-center w-full mx-auto'>
+              <div className='flex flex-col md:flex-row justify-center items-center w-full mx-auto bg-gray-50 shadow-md'>
                 <div className='flex flex-col leading-tight ml-4 md:ml-0 mr-4'>
                 <h1 className='text-[22px] max-w-[345px]'>{title}</h1>
                 <p className='text-gray-600 text-[12px] mb-1'>
