@@ -46,3 +46,18 @@ code {
 .gradient-overlay {
   background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
 }
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}

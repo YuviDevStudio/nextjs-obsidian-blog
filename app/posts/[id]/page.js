@@ -30,7 +30,7 @@ export default async function Post({ params }) {
   const postData = await getPostData(resolvedParams.id);
   return (
     <>
-      <article>
+      <article className='px-4'>
         <h1 className='text-3xl font-bold'>{postData.title}</h1>
         <div className='text-gray-600'>
           <Date dateString={postData.date} />

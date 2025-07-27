@@ -8,11 +8,11 @@ const FeaturedPosts = () => {
     const featuredPosts = allPosts.sort(() => 0.5 - Math.random()).slice(0, 3);
 
     return (
-        <section className='flex flex-row items-center justify-center w-full'>
+        <section className='flex flex-row overflow-x-auto whitespace-nowrap items-center mx-auto justify-start w-screen lg:w-full no-scrollbar'>
             {featuredPosts.map(({ id, title, featured_image }) => {
                 return (
-                    <div key={id} className='relative w-1/3 h-76 m-2 mb-9'>
-                        <Link href={`/posts/${id}`}>
+                    <div key={id} className='relative w-[300px] h-76 m-2 mb-9 flex-shrink-0'>
+                        <Link href={`/${id}`}>
                             <Image
                                 src={featured_image}
                                 alt={title}
