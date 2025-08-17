@@ -4,9 +4,7 @@ import Date from '../../components/date';
 import utilStyles from '../../../styles/utils.module.css';
 
 import Link from 'next/link';
-import ReactMarkdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
-import CodeBlock from '../../components/code-block';
+import MarkdownRenderer from '../../components/markdown-renderer'
 
 export async function generateMetadata({ params }) {
   const resolvedParams = await params;
@@ -27,26 +25,7 @@ export default async function Post({ params }) {
           <Date dateString={postData.date} />
         </div>
 
-        <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
-        components={{
-          a: ({node, ...props}) => <Link href={props.href} {...props} />,
-          code({node, inline, className, children, ...props}) {
-            const match = /language-(\w+)/.exec(className || '')
-            return !inline && match ? (
-              <CodeBlock
-                codestring={String(children).replace(/\n$/, '')}
-                language={match[1]}
-              />
-            ) : (
-              <code className={className} {...props}>
-                {children}
-              </code>
-            )
-          }
-        }}>
-          {postData.content}
-        </ReactMarkdown>
+  <MarkdownRenderer content={postData.content} />
 
         {/* <div dangerouslySetInnerHTML={{ __html: postData.content }} /> */}
       </article>

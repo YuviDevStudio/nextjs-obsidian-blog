@@ -1,8 +1,9 @@
 {
   "private": true,
   "scripts": {
-    "prebuild": "node scripts/build-posts.js",
-    "build": "next build",
+  "prebuild": "node scripts/build-posts.js",
+  "vercel-build": "npm run build",
+  "build": "next build",
     "dev": "next dev",
     "start": "next start"
   },
