@@ -58,3 +58,4 @@ export async function generateStaticParams() {
   const allPostIds = getAllPostIds();
   return allPostIds;
 }
+

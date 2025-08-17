@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "prebuild": "node scripts/build-posts.js",
     "build": "next build",
     "dev": "next dev",
     "start": "next start"
