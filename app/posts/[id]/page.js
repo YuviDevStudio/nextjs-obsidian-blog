@@ -8,6 +8,8 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import CodeBlock from '../../components/code-block';
 
+export const runtime = 'edge';
+
 export async function generateMetadata({ params }) {
   const resolvedParams = await params;
   const postData = await getPostData(resolvedParams.id);
