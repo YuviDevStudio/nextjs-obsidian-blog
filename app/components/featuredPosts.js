@@ -1,10 +1,8 @@
-import { getSortedPostsData } from '../../lib/posts';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
 
-const FeaturedPosts = () => {
-    const allPosts = getSortedPostsData()
+const FeaturedPosts = ({ allPosts = [] }) => {
     const featuredPosts = allPosts.sort(() => 0.5 - Math.random()).slice(0, 3);
 
     return (

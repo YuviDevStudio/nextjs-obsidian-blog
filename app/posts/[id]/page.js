@@ -6,16 +6,7 @@ import utilStyles from '../../../styles/utils.module.css';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { prism } from 'react-syntax-highlighter/dist/cjs/styles/prism'
-
-const CodeBlock = ({ language, codestring }) => {
-  return (
-    <SyntaxHighlighter language={language} style={prism} PreTag="div">
-      {codestring}
-    </SyntaxHighlighter>
-  )
-}
+import CodeBlock from '../../components/code-block';
 
 export async function generateMetadata({ params }) {
   const resolvedParams = await params;
@@ -32,7 +23,7 @@ export default async function Post({ params }) {
     <>
       <article className='px-4'>
         <h1 className='text-3xl font-bold'>{postData.title}</h1>
-        <div className='text-gray-600'>
+        <div className='text-gray-600 dark:text-gray-400'>
           <Date dateString={postData.date} />
         </div>
 
