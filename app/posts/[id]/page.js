@@ -56,7 +56,4 @@ export default async function Post({ params }) {
   );
 }
 
-export async function generateStaticParams() {
-  const allPostIds = getAllPostIds();
-  return allPostIds;
-}
+
