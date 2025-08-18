@@ -1,12 +1,14 @@
-import { getPostData } from '../../../lib/posts';
+import { getPostData, getAllPostIds } from '../../../lib/posts';
 import Date from '../../components/date';
 import MarkdownRenderer from '../../components/markdown-renderer';
 import { notFound } from 'next/navigation';
 
-export const runtime = 'edge';
+// Force static generation for post pages and provide static params at build time
+export const dynamic = 'force-static';
 
 export async function generateMetadata({ params }) {
-  const postData = await getPostData(params.id);
+  const resolvedParams = await params
+  const postData = await getPostData(resolvedParams.id);
   if (!postData) {
     return notFound();
   }
@@ -15,8 +17,14 @@ export async function generateMetadata({ params }) {
   };
 }
 
+export async function generateStaticParams() {
+  const posts = getAllPostIds();
+  return posts.map((p) => ({ id: p.params.id }));
+}
+
 export default async function Post({ params }) {
-  const postData = await getPostData(params.id);
+  const resolvedParams = await params
+  const postData = await getPostData(resolvedParams.id);
   if (!postData) {
     return notFound();
   }
