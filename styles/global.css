@@ -1,5 +1,19 @@
 @import "tailwindcss";
 
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  background-color: #fff;
+  color: #000;
+}
+
+html.dark body {
+  background-color: #111827;
+  color: #fff;
+}
+
 html,
 body {
   padding: 0;
@@ -42,3 +56,22 @@ code {
   font-size: 0.8rem !important;
   line-height: 1rem;
 } 
+
+.gradient-overlay {
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
