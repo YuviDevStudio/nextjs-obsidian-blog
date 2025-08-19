@@ -4,6 +4,13 @@ const path = require('path');
 const matter = require('gray-matter');
 
 const postsDirectory = path.join(process.cwd(), 'posts');
+const legacyJsonPath = path.join(process.cwd(), 'lib', 'posts.json');
+
+// Fail early if a legacy posts.json exists in the repo - we no longer support it.
+if (fs.existsSync(legacyJsonPath)) {
+  console.error('Legacy lib/posts.json detected. Please remove it from the repository and ensure it is ignored by git.');
+  process.exit(1);
+}
 
 function contentObsidianToMD(content) {
   // Regular expression to match text in double brackets
