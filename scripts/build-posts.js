@@ -28,8 +28,15 @@ function frontMatterObsidianToMD(data) {
 
 function getPostsData() {
   const fileNames = fs.readdirSync(postsDirectory);
+  const slugify = (str) =>
+    str
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '');
+
   const allPostsData = fileNames.map((fileName) => {
-    const id = fileName.replace(/\.md$/, '');
+    const rawName = fileName.replace(/\.md$/, '');
+    const id = slugify(rawName);
     const fullPath = path.join(postsDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const matterResult = matter(fileContents);
