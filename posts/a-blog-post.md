@@ -2,7 +2,7 @@
 title: A blog post
 description: 'This a description of what this is a blog post created from Obsidian This a description of what this is a blog post created from Obsidian'
 date: 2023-12-23
-tags: ["noticias", "programacion"]
+tags: ["noticias", "code"]
 featured_image: /images/dog_image_1.jpg
 ---
 Write your text here.

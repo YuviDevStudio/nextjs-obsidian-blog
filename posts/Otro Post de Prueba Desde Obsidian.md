@@ -6,18 +6,18 @@ tags:
   - code
   - tecnologia
   - noticias
-featured_image: /images/test-image-logo.jpeg
+featured_image: /images/test-image-blog.jpeg
 ---
 Este es otro post mas de prueba para corroborar que toda la lógica de despliegue de posts desde Obsidian está funcionando correctamente. Este es otro post mas de prueba para corroborar que toda la lógica de despliegue de posts desde Obsidian está funcionando correctamente. Este es otro post mas de prueba para corroborar que toda la lógica de despliegue de posts desde Obsidian está funcionando correctamente.
 
-[[test-image-blog.jpeg]]
+![[test-image-blog.jpeg]]
 
 Este es otro post mas de prueba para corroborar que toda la lógica de despliegue de posts desde Obsidian está funcionando correctamente. Este es otro post mas de prueba para corroborar que toda la lógica de despliegue de posts desde Obsidian está funcionando correctamente. Este es otro post mas de prueba para corroborar que toda la lógica de despliegue de posts desde Obsidian está funcionando correctamente.
 
 Este es otro post mas de prueba para corroborar que toda la lógica de despliegue de posts desde Obsidian está funcionando correctamente.
 Este es otro post mas de prueba para corroborar que toda la lógica de despliegue de posts desde Obsidian está funcionando correctamente
 
-[[obsidian-logo.jpeg]]
+![[obsidian-logo.jpeg]]
 
 Este es otro post mas de prueba para corroborar que toda la lógica de despliegue de posts desde Obsidian está funcionando correctamente. Este es otro post mas de prueba para corroborar que toda la lógica de despliegue de posts desde Obsidian está funcionando correctamente. Este es otro post mas de prueba para corroborar que toda la lógica de despliegue de posts desde Obsidian está funcionando correctamente.
 

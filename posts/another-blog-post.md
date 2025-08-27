@@ -13,7 +13,7 @@ Write your text here.
 Both types of link syntax work.
 
 You can write links as regular markdown links:
-[Click here](https://twitter.com/neilxm)
+[Click here](https://x.com/)
 
 Or as Obsidian wikilinks. When linking to other posts
 [[yet-another-blog-post]]
