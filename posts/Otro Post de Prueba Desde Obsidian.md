@@ -21,4 +21,4 @@ Este es otro post mas de prueba para corroborar que toda la lógica de despliegu
 
 Este es otro post mas de prueba para corroborar que toda la lógica de despliegue de posts desde Obsidian está funcionando correctamente. Este es otro post mas de prueba para corroborar que toda la lógica de despliegue de posts desde Obsidian está funcionando correctamente. Este es otro post mas de prueba para corroborar que toda la lógica de despliegue de posts desde Obsidian está funcionando correctamente.
 
-![[A New Note Created Directly From Obsidian]]
+[[A New Note Created Directly From Obsidian]]
