@@ -20,7 +20,8 @@ Or as Obsidian wikilinks. When linking to other posts
 
 ## Examples of Images
 
-Both types of image insert syntax work as well. 
+Both types of image insert syntax work as well.
+This image is set as the featured image for this post:
 
 You can insert images as regular markdown syntax:
 ![](/images/test_image_1.jpg)
