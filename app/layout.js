@@ -5,6 +5,19 @@ import Navbar from './components/navbar';
 import SubNavbar from './components/sub-navbar';
 import { ThemeProvider } from './components/theme-provider';
 import { getAllTags } from '../lib/posts';
+import { Inter, Outfit } from 'next/font/google';
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
+
+const outfit = Outfit({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-outfit',
+});
 
 export const metadata = {
   title: 'My Blog',
@@ -14,16 +27,17 @@ export const metadata = {
 export default function RootLayout({ children }) {
   const tags = getAllTags();
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
       <body>
         <ThemeProvider>
           <Navbar />
           <SubNavbar tags={tags} />
-          <div className="flex flex-row justify-center max-w-[1200px] mx-auto">
+          <main className="w-full max-w-[1340px] mx-auto px-4 md:px-6 py-6">
             {children}
-          </div>
+          </main>
         </ThemeProvider>
       </body>
     </html>
   );
 }
+

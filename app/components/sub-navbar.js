@@ -7,26 +7,31 @@ const SubNavbar = ({ tags }) => {
   const { theme } = useTheme();
 
   return (
-    <div className={`bg-${theme === 'dark' ? 'gray-700' : 'white'}`}>
-      <nav className=" text-[14px] max-w-[1200px] mx-auto">
-        <ul className="flex flex-row overflow-x-auto whitespace-nowrap justify-start md:justify-center gap-4 md:gap-8 p-1 shadow-md no-scrollbar">
-          {tags.map(tag => (
-            <li key={tag}>
-              <Link
-                href={`/tags/${tag}`}
-                className="!no-underline text-gray-800 dark:text-white font-bold">
-                  J
-                <span className={`italic ${theme === 'dark' ? 'text-gray-200' : 'text-gray-800'}`}>
-                  ota
-                </span>
-                {tag}
-              </Link>
-            </li>
-          ))}
+    <div className={`w-full py-2 border-b transition-colors ${theme === 'dark' ? 'bg-slate-900/40 border-slate-800/60' : 'bg-slate-50/50 border-slate-200/50'}`}>
+      <nav className="max-w-[1340px] mx-auto px-4 md:px-6 text-sm">
+        <ul className="flex flex-row items-center overflow-x-auto whitespace-nowrap justify-start md:justify-center gap-3 no-scrollbar py-1">
+          {tags.map(tag => {
+            const capitalizedTag = tag.charAt(0).toUpperCase() + tag.slice(1);
+            return (
+              <li key={tag}>
+                <Link
+                  href={`/tags/${tag}`}
+                  className={`inline-block px-3 py-1 rounded-full text-xs font-semibold border transition-all duration-200 !no-underline ${
+                    theme === 'dark' 
+                      ? 'bg-slate-800/40 border-slate-800 text-slate-300 hover:bg-slate-800 hover:text-sky-400 hover:border-sky-500/30' 
+                      : 'bg-white border-slate-200 text-slate-600 hover:bg-indigo-50/50 hover:text-indigo-600 hover:border-indigo-200'
+                  }`}
+                >
+                  #{capitalizedTag}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </nav>
     </div>
   )
 }
+
 
 export default SubNavbar
