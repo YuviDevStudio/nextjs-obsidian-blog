@@ -14,7 +14,7 @@ export default function PostsList({ posts = [] }) {
         <h1 className={`text-[22px] ${theme === 'dark' ? 'text-gray-100' : 'text-gray-600'} ml-6`}>Lo Último</h1>
       </div>
       <ul>
-        {posts.map(({ id, date, title, description, tags, featured_image }) => (
+        {posts.map(({ id, date, title, description, tags, featured_image }, index) => (
           <li key={id} className=' px-1 md:px-0'>
             <Link href={`/${id}`} className='!no-underline'>
               <div className='flex flex-row justify-between max-w-[600px] mx-auto'>
@@ -30,9 +30,16 @@ export default function PostsList({ posts = [] }) {
                     ))}
                   </p>
                 </div>
-                <div>
+                <div className='relative w-[200px] md:w-[365px] h-[90px] md:h-[140px] overflow-hidden flex-shrink-0 ml-4'>
                   {featured_image && (
-                    <Image src={featured_image} alt={title} width={365} height={140} className='w-[200px] md:w-[365px] h-[90px] md:h-[140px] overflow-hidden object-cover' />
+                    <Image
+                      src={featured_image}
+                      alt={title}
+                      fill
+                      sizes="(max-width: 768px) 200px, 365px"
+                      priority={index === 0}
+                      className='object-cover'
+                    />
                   )}
                 </div>
               </div>

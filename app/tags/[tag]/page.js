@@ -8,8 +8,8 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function TagPage({ params }) {
-  const { tag } = params;
+export default async function TagPage({ params }) {
+  const { tag } = await params;
   const posts = getPostsByTag(tag);
 
   return (
