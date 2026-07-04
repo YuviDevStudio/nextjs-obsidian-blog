@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
@@ -10,8 +12,8 @@ html.dark {
 }
 
 body {
-  background-color: #f8fafc; /* slate-50 */
-  color: #0f172a; /* slate-900 */
+  background-color: #ffffff;
+  color: #0f172a;
   transition: background-color 0.3s ease, color 0.3s ease;
   font-family: var(--font-sans);
 }
@@ -39,6 +41,8 @@ a {
   text-decoration: none;
   transition: color 0.2s ease, opacity 0.2s ease;
 }
+
+
 
 img {
   max-width: 100%;

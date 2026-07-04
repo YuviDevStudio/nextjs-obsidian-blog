@@ -11,11 +11,11 @@ export default function PostsList({ posts = [], title = 'Lo Último' }) {
   return (
     <div className="w-full">
       {title && (
-        <div className="flex items-center justify-between mb-6 pb-2 border-b border-slate-200/60 dark:border-slate-800/60 px-2">
-          <h2 className="text-xl md:text-2xl font-bold font-display tracking-tight text-slate-800 dark:text-slate-100">
+        <div className="flex items-center justify-between mb-6 pb-2 border-b border-slate-200 dark:border-slate-800/60 px-2">
+          <h2 className="text-xl md:text-2xl font-bold font-display tracking-tight text-black dark:text-slate-100">
             {title}
           </h2>
-          <span className="text-xs text-slate-400 dark:text-slate-500 font-medium">
+          <span className="text-xs text-black dark:text-slate-500 font-medium">
             {posts.length} {posts.length === 1 ? 'artículo' : 'artículos'}
           </span>
         </div>
@@ -25,11 +25,11 @@ export default function PostsList({ posts = [], title = 'Lo Último' }) {
         {posts.map(({ id, date, title, description, tags, featured_image }, index) => (
           <li key={id}>
             <Link href={`/${id}`} className="block group !no-underline">
-              <div className="flex flex-col sm:flex-row items-stretch gap-5 p-4 rounded-2xl border border-slate-200/40 dark:border-slate-800/45 bg-white/40 dark:bg-slate-900/20 hover:bg-white dark:hover:bg-slate-900/60 hover:shadow-lg dark:hover:shadow-slate-950/30 transition-all duration-300">
+              <div className="flex flex-col sm:flex-row items-stretch gap-5 p-4 rounded-2xl border border-slate-200 dark:border-slate-800/45 bg-white dark:bg-slate-900/20 shadow-sm hover:bg-slate-50 dark:hover:bg-slate-900/60 hover:shadow-md dark:hover:shadow-slate-950/30 transition-all duration-300">
                 
                 {/* Image thumbnail — left side on desktop, top on mobile */}
                 {featured_image && (
-                  <div className="relative w-full h-[200px] sm:w-[200px] sm:h-[130px] rounded-xl overflow-hidden shrink-0 bg-slate-100 dark:bg-slate-800">
+                  <div className="relative w-full h-[200px] sm:w-[200px] sm:h-[130px] rounded-xl overflow-hidden shrink-0 bg-white dark:bg-slate-800">
                     <Image
                       src={featured_image}
                       alt={title}
@@ -44,18 +44,18 @@ export default function PostsList({ posts = [], title = 'Lo Último' }) {
                 {/* Text content — flex column */}
                 <div className="flex flex-col flex-1 justify-between py-1 min-w-0">
                   <div>
-                    <h3 className="text-lg md:text-xl font-bold leading-snug font-display text-slate-800 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-sky-400 transition-colors duration-250 line-clamp-2">
+                    <h3 className="text-lg md:text-xl font-bold leading-snug font-display text-black dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-sky-400 transition-colors duration-250 line-clamp-2">
                       {title}
                     </h3>
                     
-                    <p className="text-slate-500 dark:text-slate-400 text-sm mt-2 line-clamp-2 leading-relaxed">
+                    <p className="text-black dark:text-slate-400 text-sm mt-2 line-clamp-2 leading-relaxed">
                       {description}
                     </p>
                   </div>
                   
                   {/* Bottom metadata panel */}
                   <div className="flex flex-wrap items-center gap-3 mt-4 text-xs">
-                    <span className="text-slate-400 dark:text-slate-500 font-medium">
+                    <span className="text-black dark:text-slate-400 font-medium">
                       <Date dateString={date} />
                     </span>
                     
@@ -66,7 +66,7 @@ export default function PostsList({ posts = [], title = 'Lo Último' }) {
                           return (
                             <span 
                               key={tagIndex} 
-                              className="px-2 py-0.5 text-[10px] font-semibold rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200/20 dark:border-slate-700/30"
+                              className="px-2 py-0.5 text-[10px] font-semibold rounded bg-slate-100 dark:bg-slate-800 text-black dark:text-slate-400 border border-slate-200 dark:border-slate-700/30"
                             >
                               #{capitalizedTag}
                             </span>
