@@ -33,7 +33,7 @@ const FeaturedPosts = ({ allPosts = [] }) => {
                                         {capitalizedTag}
                                     </span>
                                 )}
-                                <h2 className='text-lg md:text-xl font-bold font-display leading-snug group-hover:text-indigo-200 dark:group-hover:text-sky-300 transition-colors duration-250 line-clamp-3'>
+                                <h2 className='text-lg md:text-xl text-white font-bold font-display leading-snug group-hover:text-indigo-200 dark:group-hover:text-sky-300 transition-colors duration-250 line-clamp-3'>
                                     {title}
                                 </h2>
                             </div>
