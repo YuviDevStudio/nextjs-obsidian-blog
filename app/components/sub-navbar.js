@@ -7,7 +7,7 @@ const SubNavbar = ({ tags }) => {
   const { theme } = useTheme();
 
   return (
-    <div className={`w-full py-2 border-b transition-colors ${theme === 'dark' ? 'bg-slate-900/40 border-slate-800/60' : 'bg-slate-50/50 border-slate-200/50'}`}>
+    <div className={`w-full py-2 border-b transition-colors ${theme === 'dark' ? 'bg-slate-900/40 border-slate-800/60' : 'bg-slate-50 border-slate-200'}`}>
       <nav className="max-w-[1340px] mx-auto px-4 md:px-6 text-sm">
         <ul className="flex flex-row items-center overflow-x-auto whitespace-nowrap justify-start md:justify-center gap-3 no-scrollbar py-1">
           {tags.map(tag => {
@@ -19,7 +19,7 @@ const SubNavbar = ({ tags }) => {
                   className={`inline-block px-3 py-1 rounded-full text-xs font-semibold border transition-all duration-200 !no-underline ${
                     theme === 'dark' 
                       ? 'bg-slate-800/40 border-slate-800 text-slate-300 hover:bg-slate-800 hover:text-sky-400 hover:border-sky-500/30' 
-                      : 'bg-white border-slate-200 text-slate-600 hover:bg-indigo-50/50 hover:text-indigo-600 hover:border-indigo-200'
+                      : 'bg-slate-50 border-slate-300 text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 hover:border-indigo-300'
                   }`}
                 >
                   #{capitalizedTag}

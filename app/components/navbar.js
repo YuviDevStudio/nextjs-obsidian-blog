@@ -63,7 +63,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`sticky top-0 z-50 w-full transition-all duration-300 ease-in-out border-b backdrop-blur-md ${navbarVisible ? 'translate-y-0' : '-translate-y-full'} ${theme === 'dark' ? 'bg-slate-900/80 border-slate-800/80 shadow-slate-950/20' : 'bg-white/80 border-slate-200/50 shadow-slate-100/50'} shadow-sm`}>
+      <nav className={`sticky top-0 z-50 w-full transition-all duration-300 ease-in-out border-b backdrop-blur-md ${navbarVisible ? 'translate-y-0' : '-translate-y-full'} ${theme === 'dark' ? 'bg-slate-900/80 border-slate-800/80 shadow-slate-950/20' : 'bg-white/90 border-slate-200 shadow-slate-100/50'} shadow-sm`}>
         <div className="w-full max-w-[1340px] mx-auto px-4 md:px-6 py-3 flex items-center justify-between">
           {/* Left Section: Hamburger Menu */}
           <div className="flex items-center flex-none">
@@ -126,7 +126,7 @@ export default function Navbar() {
               ref={searchRef}
               type="text"
               placeholder="Buscar..."
-              className={`p-2 pl-10 md:pl-11 w-full border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm ${theme === 'dark' ? 'bg-slate-800 text-white' : 'bg-slate-50 text-slate-900'} transition-all`}
+              className={`p-2 pl-10 md:pl-11 w-full border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm ${theme === 'dark' ? 'bg-slate-800 text-white' : 'bg-slate-50 text-slate-900'} transition-all`}
             />
           </div>
 
