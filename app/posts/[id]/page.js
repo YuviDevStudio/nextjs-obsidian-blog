@@ -9,13 +9,14 @@ import Link from 'next/link';
 export const dynamic = 'force-static';
 
 export async function generateMetadata({ params }) {
-  const resolvedParams = await params
-  const postData = await getPostData(resolvedParams.id);
+  const resolvedParams = await params;
+  const postData = getPostData(resolvedParams.id);
   if (!postData) {
-    return notFound();
+    return { title: 'Post no encontrado' };
   }
   return {
-    title: postData.title,
+    title: postData.title || 'JotaEDRA',
+    description: postData.description || undefined,
   };
 }
 
@@ -25,10 +26,10 @@ export async function generateStaticParams() {
 }
 
 export default async function Post({ params }) {
-  const resolvedParams = await params
-  const postData = await getPostData(resolvedParams.id);
+  const resolvedParams = await params;
+  const postData = getPostData(resolvedParams.id);
   if (!postData) {
-    return notFound();
+    notFound();
   }
 
   return (
@@ -65,7 +66,7 @@ export default async function Post({ params }) {
                 return (
                   <Link 
                     key={idx}
-                    href={`/tags/${tag}`}
+                    href={`/tags/${encodeURIComponent(tag)}`}
                     className="px-2 py-0.5 text-xs font-semibold rounded bg-indigo-50/60 text-indigo-600 dark:bg-sky-500/10 dark:text-sky-400 hover:opacity-90 transition-opacity !no-underline"
                   >
                     #{cap}
@@ -88,7 +89,7 @@ export default async function Post({ params }) {
           <div className="relative w-full h-[240px] sm:h-[340px] rounded-2xl overflow-hidden mb-8 border border-slate-200/20 dark:border-slate-800/40">
             <Image
               src={postData.featured_image}
-              alt={postData.title}
+              alt={postData.title || ''}
               fill
               priority
               className="object-cover"
@@ -121,4 +122,3 @@ export default async function Post({ params }) {
     </div>
   );
 }
-

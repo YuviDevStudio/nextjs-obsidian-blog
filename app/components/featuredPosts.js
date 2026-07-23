@@ -1,49 +1,158 @@
+'use client'
+
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react'
+import { useState, useCallback } from 'react';
 
 const FeaturedPosts = ({ allPosts = [] }) => {
-    // Select the latest 3 posts stably to prevent Next.js hydration mismatches
     const featuredPosts = allPosts.slice(0, 3);
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const count = featuredPosts.length;
+
+    const next = useCallback(() => {
+        if (count === 0) return;
+        setCurrentIndex((prev) => (prev + 1) % count);
+    }, [count]);
+
+    const prev = useCallback(() => {
+        if (count === 0) return;
+        setCurrentIndex((prev) => (prev - 1 + count) % count);
+    }, [count]);
+
+    if (count === 0) {
+        return null;
+    }
+
+    const renderPost = ({ id, title, featured_image, tags = [] }, isPriority = false) => {
+        const displayTag = tags && tags.length > 0 ? tags[0] : null;
+        const capitalizedTag = displayTag ? displayTag.charAt(0).toUpperCase() + displayTag.slice(1) : '';
+
+        return (
+            <div key={id} className='group relative h-[320px] rounded-2xl overflow-hidden shadow-md dark:shadow-slate-950/40 border border-slate-200/20 dark:border-slate-800/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl bg-slate-100 dark:bg-slate-900'>
+                <Link href={`/${id}`} className='relative block w-full h-full'>
+                    {featured_image ? (
+                    <Image
+                        src={featured_image}
+                        alt={title || ''}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        priority={isPriority}
+                        className="object-cover transition-transform duration-500 scale-100 group-hover:scale-105"
+                    />
+                    ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-indigo-500/30 to-sky-500/30" />
+                    )}
+                    <div className='absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent z-10 transition-opacity group-hover:opacity-95' />
+                    <div className='absolute bottom-0 left-0 right-0 p-5 text-white z-20 flex flex-col justify-end h-full'>
+                        {capitalizedTag && (
+                            <span className="inline-block self-start px-2 py-0.5 mb-2 rounded bg-indigo-600/90 text-[10px] font-bold uppercase tracking-wider text-indigo-50 dark:bg-sky-500/90 dark:text-sky-950">
+                                {capitalizedTag}
+                            </span>
+                        )}
+                        <h2 className='text-lg md:text-xl text-white font-bold font-display leading-snug group-hover:text-indigo-200 dark:group-hover:text-sky-300 transition-colors duration-250 line-clamp-3'>
+                            {title}
+                        </h2>
+                    </div>
+                </Link>
+            </div>
+        );
+    };
 
     return (
-        <section className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 my-6 px-4 md:px-0'>
-            {featuredPosts.map(({ id, title, featured_image, tags = [] }) => {
-                const displayTag = tags && tags.length > 0 ? tags[0] : null;
-                const capitalizedTag = displayTag ? displayTag.charAt(0).toUpperCase() + displayTag.slice(1) : '';
+        <section className='my-6'>
+            {/* Desktop: grid */}
+            <div className='hidden lg:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-0'>
+                {featuredPosts.map((post, i) => renderPost(post, i === 0))}
+            </div>
 
-                return (
-                    <div key={id} className='group relative h-[320px] rounded-2xl overflow-hidden shadow-md dark:shadow-slate-950/40 border border-slate-200/20 dark:border-slate-800/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl bg-slate-100 dark:bg-slate-900'>
-                        <Link href={`/posts/${id}`} className='relative block w-full h-full'>
-                            <Image
-                                src={featured_image}
-                                alt={title}
-                                fill
-                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                                priority
-                                className="object-cover transition-transform duration-500 scale-100 group-hover:scale-105"
-                            />
-                            {/* Gradient Overlay */}
-                            <div className='absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent z-10 transition-opacity group-hover:opacity-95' />
-                            
-                            {/* Text content */}
-                            <div className='absolute bottom-0 left-0 right-0 p-5 text-white z-20 flex flex-col justify-end h-full'>
-                                {capitalizedTag && (
-                                    <span className="inline-block self-start px-2 py-0.5 mb-2 rounded bg-indigo-600/90 text-[10px] font-bold uppercase tracking-wider text-indigo-50 dark:bg-sky-500/90 dark:text-sky-950">
-                                        {capitalizedTag}
-                                    </span>
+            {/* Mobile: carousel */}
+            <div className='lg:hidden relative px-4 md:px-0'>
+                {featuredPosts.map((post, i) => {
+                    const displayTag = post.tags && post.tags.length > 0 ? post.tags[0] : null;
+                    const capitalizedTag = displayTag ? displayTag.charAt(0).toUpperCase() + displayTag.slice(1) : '';
+                    const isActive = i === currentIndex;
+
+                    return (
+                        <div
+                            key={post.id}
+                            className={isActive ? 'block' : 'hidden'}
+                            aria-hidden={!isActive}
+                        >
+                            <div className='group relative h-[320px] rounded-2xl overflow-hidden shadow-md dark:shadow-slate-950/40 border border-slate-200/20 dark:border-slate-800/40 transition-all duration-300 bg-slate-100 dark:bg-slate-900'>
+                                <Link href={`/${post.id}`} className='relative block w-full h-full'>
+                                    {post.featured_image ? (
+                                    <Image
+                                        src={post.featured_image}
+                                        alt={post.title || ''}
+                                        fill
+                                        sizes="100vw"
+                                        priority={i === 0}
+                                        className="object-cover transition-transform duration-500 scale-100 group-hover:scale-105"
+                                    />
+                                    ) : (
+                                        <div className="w-full h-full bg-gradient-to-br from-indigo-500/30 to-sky-500/30" />
+                                    )}
+                                    <div className='absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent z-10 transition-opacity group-hover:opacity-95' />
+                                    <div className='absolute bottom-0 left-0 right-0 p-5 text-white z-20 flex flex-col justify-end h-full pointer-events-none'>
+                                        {capitalizedTag && (
+                                            <span className="inline-block self-start px-2 py-0.5 mb-2 rounded bg-indigo-600/90 text-[10px] font-bold uppercase tracking-wider text-indigo-50 dark:bg-sky-500/90 dark:text-sky-950">
+                                                {capitalizedTag}
+                                            </span>
+                                        )}
+                                        <h2 className='text-lg md:text-xl text-white font-bold font-display leading-snug group-hover:text-indigo-200 dark:group-hover:text-sky-300 transition-colors duration-250 line-clamp-3'>
+                                            {post.title}
+                                        </h2>
+                                    </div>
+                                </Link>
+
+                                {/* Dots outside the link so they don't fight navigation */}
+                                {count > 1 && (
+                                    <div className='absolute bottom-3 left-0 right-0 z-30 flex items-center justify-center gap-1.5 pointer-events-auto'>
+                                        {featuredPosts.map((_, dotIndex) => (
+                                            <button
+                                                key={dotIndex}
+                                                type="button"
+                                                onClick={() => setCurrentIndex(dotIndex)}
+                                                className={`rounded-full transition-all ${dotIndex === currentIndex ? 'bg-white w-3 h-1.5' : 'bg-white/50 w-1.5 h-1.5'}`}
+                                                aria-label={`Ir al destacado ${dotIndex + 1}`}
+                                                aria-current={dotIndex === currentIndex ? 'true' : undefined}
+                                            />
+                                        ))}
+                                    </div>
                                 )}
-                                <h2 className='text-lg md:text-xl text-white font-bold font-display leading-snug group-hover:text-indigo-200 dark:group-hover:text-sky-300 transition-colors duration-250 line-clamp-3'>
-                                    {title}
-                                </h2>
                             </div>
-                        </Link>
-                    </div>
-                )
-            })}
+                        </div>
+                    );
+                })}
+
+                {/* Compact chevrons — do not cover the card for post navigation */}
+                {count > 1 && (
+                    <>
+                        <button
+                            type="button"
+                            onClick={prev}
+                            className='absolute left-6 top-1/2 -translate-y-1/2 z-30 flex h-9 w-9 items-center justify-center rounded-full bg-slate-950/50 text-white backdrop-blur-sm hover:bg-slate-950/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-white'
+                            aria-label='Anterior'
+                        >
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+                            </svg>
+                        </button>
+                        <button
+                            type="button"
+                            onClick={next}
+                            className='absolute right-6 top-1/2 -translate-y-1/2 z-30 flex h-9 w-9 items-center justify-center rounded-full bg-slate-950/50 text-white backdrop-blur-sm hover:bg-slate-950/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-white'
+                            aria-label='Siguiente'
+                        >
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </>
+                )}
+            </div>
         </section>
     )
 }
-
 
 export default FeaturedPosts

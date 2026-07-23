@@ -34,3 +34,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# legacy generated posts index (app reads markdown directly)
+lib/posts.json
+
+# Obsidian vault metadata
+posts/.obsidian/
+
+# local tooling / screenshots
+.worktrees/
+/after-move-verify.png
+/iphone12*.png

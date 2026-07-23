@@ -1,13 +1,8 @@
-'use client'
-
 import Link from 'next/link'
 import Image from 'next/image'
 import Date from './date'
-import { useTheme } from './theme-provider'
 
 export default function PostsList({ posts = [], title = 'Lo Último' }) {
-  const { theme } = useTheme()
-
   return (
     <div className="w-full">
       {title && (
@@ -22,42 +17,43 @@ export default function PostsList({ posts = [], title = 'Lo Último' }) {
       )}
       
       <ul className="space-y-4 px-2 sm:px-0">
-        {posts.map(({ id, date, title, description, tags, featured_image }, index) => (
+        {posts.map(({ id, date, title: postTitle, description, tags, featured_image }, index) => (
           <li key={id}>
             <Link href={`/${id}`} className="block group !no-underline">
               <div className="flex flex-col sm:flex-row items-stretch gap-5 p-4 rounded-2xl border border-slate-200 dark:border-slate-800/45 bg-white dark:bg-slate-900/20 shadow-sm hover:bg-slate-50 dark:hover:bg-slate-900/60 hover:shadow-md dark:hover:shadow-slate-950/30 transition-all duration-300">
                 
-                {/* Image thumbnail — left side on desktop, top on mobile */}
                 {featured_image && (
                   <div className="relative w-full h-[200px] sm:w-[200px] sm:h-[130px] rounded-xl overflow-hidden shrink-0 bg-white dark:bg-slate-800">
                     <Image
                       src={featured_image}
-                      alt={title}
+                      alt={postTitle || ''}
                       fill
                       sizes="(max-width: 640px) 100vw, 200px"
                       priority={index === 0}
-                      className="object-cover transition-transform duration-500 scale-100 group-hover:scale-103"
+                      className="object-cover transition-transform duration-500 scale-100 group-hover:scale-105"
                     />
                   </div>
                 )}
 
-                {/* Text content — flex column */}
                 <div className="flex flex-col flex-1 justify-between py-1 min-w-0">
                   <div>
                     <h3 className="text-lg md:text-xl font-bold leading-snug font-display text-black dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-sky-400 transition-colors duration-250 line-clamp-2">
-                      {title}
+                      {postTitle}
                     </h3>
                     
-                    <p className="text-black dark:text-slate-400 text-sm mt-2 line-clamp-2 leading-relaxed">
-                      {description}
-                    </p>
+                    {description ? (
+                      <p className="text-black dark:text-slate-400 text-sm mt-2 line-clamp-2 leading-relaxed">
+                        {description}
+                      </p>
+                    ) : null}
                   </div>
                   
-                  {/* Bottom metadata panel */}
                   <div className="flex flex-wrap items-center gap-3 mt-4 text-xs">
-                    <span className="text-black dark:text-slate-400 font-medium">
-                      <Date dateString={date} />
-                    </span>
+                    {date ? (
+                      <span className="text-black dark:text-slate-400 font-medium">
+                        <Date dateString={date} />
+                      </span>
+                    ) : null}
                     
                     {tags && tags.length > 0 && (
                       <div className="flex flex-wrap gap-1.5">
@@ -85,5 +81,3 @@ export default function PostsList({ posts = [], title = 'Lo Último' }) {
     </div>
   )
 }
-
-

@@ -3,7 +3,7 @@ title: 'Another Blog Post'
 description: 'This description of what this is another blog post created from Obsidian This description of what this is another blog post created from Obsidian'
 date: '2024-01-15'
 tags: ["salud", "tecnologia"]
-featured_image: /images/dog_image_2.jpg
+featured_image: /posts/images/dog_image_2.jpg
 ---
 
 Write your text here.
@@ -23,9 +23,9 @@ Or as Obsidian wikilinks. When linking to other posts
 Both types of image insert syntax work as well. 
 
 You can insert images as regular markdown syntax:
-![](/images/test_image_1.jpg)
+![](/posts/images/test_image_1.jpg)
 
-Or as Obsidian syntax. Obsidian adds images use just file names, so our code fills in the full image path as `/images/file_name.jpg`
+Or as Obsidian syntax. Obsidian adds images use just file names, so our code fills in the full image path as `/posts/images/file_name.jpg`
 
 ![[test_image_2.jpg]]
 

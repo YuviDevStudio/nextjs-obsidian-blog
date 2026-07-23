@@ -4,7 +4,7 @@ description: Suplementarte diariamente con magnesio puede ayudarte a prevenir y 
 tags:
   - salud
 date: 2025-08-28
-featured_image: /images/FOTO-BLOG-MAGNESIO.jpg
+featured_image: /posts/images/FOTO-BLOG-MAGNESIO.jpg
 ---
 Consumir magnesio como suplemento a tu dieta diaria puede aportarte muchos mas beneficios para tu salud de los que te puedas imaginar. Empezando por ayudarte a combatir el envejecimiento ayudándote con la longevidad mediante la reparación del ADN y transcripción del mismo, procesos que son fundamentales para el correcto funcionamiento de las células y para evitar el deterioro genético que contribuye al envejecimiento.
 

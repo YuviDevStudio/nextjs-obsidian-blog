@@ -4,7 +4,7 @@ import "prismjs/plugins/line-numbers/prism-line-numbers.css";
 import Navbar from './components/navbar';
 import SubNavbar from './components/sub-navbar';
 import { ThemeProvider } from './components/theme-provider';
-import { getAllTags } from '../lib/posts';
+import { getAllTags, getSearchIndex } from '../lib/posts';
 import { Inter, Outfit } from 'next/font/google';
 
 const inter = Inter({
@@ -20,17 +20,41 @@ const outfit = Outfit({
 });
 
 export const metadata = {
-  title: 'My Blog',
-  description: 'My personal blog',
+  title: {
+    default: 'JotaEDRA',
+    template: '%s | JotaEDRA',
+  },
+  description:
+    'Blog en español sobre salud, tecnología, entretenimiento y más.',
 };
+
+/** Runs before paint so dark mode matches localStorage / system preference (no FOUC). */
+const themeInitScript = `
+(function(){
+  try {
+    var t = localStorage.getItem('theme');
+    var dark = t === 'dark' || (t !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    if (dark) document.documentElement.classList.add('dark');
+    else document.documentElement.classList.remove('dark');
+  } catch (e) {}
+})();
+`;
 
 export default function RootLayout({ children }) {
   const tags = getAllTags();
+  const searchIndex = getSearchIndex();
+
   return (
-    <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
+    <html
+      lang="es"
+      suppressHydrationWarning
+      className={`${inter.variable} ${outfit.variable}`}
+    >
       <body>
+        {/* Inline before interactive UI so dark class is set before first paint when possible */}
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <ThemeProvider>
-          <Navbar />
+          <Navbar searchPosts={searchIndex} />
           <SubNavbar tags={tags} />
           <main className="w-full max-w-[1340px] mx-auto px-4 md:px-6 py-6">
             {children}
@@ -40,4 +64,3 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
-
