@@ -6,6 +6,7 @@ import SubNavbar from './components/sub-navbar';
 import { ThemeProvider } from './components/theme-provider';
 import { getAllTags } from '../lib/posts';
 import { Inter, Outfit } from 'next/font/google';
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -28,6 +29,16 @@ export default function RootLayout({ children }) {
   const tags = getAllTags();
   return (
     <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
+    <head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9K841MNERH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9K841MNERH');
+</script>
+    </head>
       <body>
         <ThemeProvider>
           <Navbar />
