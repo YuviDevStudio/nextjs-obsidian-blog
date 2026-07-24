@@ -29,16 +29,6 @@ export default function RootLayout({ children }) {
   const tags = getAllTags();
   return (
     <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
-    <head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9K841MNERH"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments)}
-  gtag('js', new Date());
-
-  gtag('config', 'G-9K841MNERH');
-</script>
-    </head>
       <body>
         <ThemeProvider>
           <Navbar />
@@ -48,6 +38,7 @@ export default function RootLayout({ children }) {
           </main>
         </ThemeProvider>
       </body>
+      <GoogleAnalytics gaId="G-9K841MNERH" />
     </html>
   );
 }
