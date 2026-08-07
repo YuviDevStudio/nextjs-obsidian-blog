@@ -2,6 +2,10 @@
  * Pre-build validator for markdown posts.
  * The app reads posts directly from `posts/*.md` via lib/posts.js —
  * this script no longer generates lib/posts.json.
+ *
+ * It also mirrors `posts/images/` into `public/posts/images/` so post images
+ * are served as static assets (required on Cloudflare Pages, which runs the
+ * Edge Runtime and cannot read the filesystem at request time).
  */
 const fs = require('fs');
 const path = require('path');
@@ -89,6 +93,22 @@ for (const fileName of fileNames) {
 if (errors > 0) {
   console.error(`Post validation failed with ${errors} error(s).`);
   process.exit(1);
+}
+
+// Mirror posts/images -> public/posts/images so images are static assets.
+const imagesDir = path.join(postsDirectory, 'images');
+const publicImagesDir = path.join(process.cwd(), 'public', 'posts', 'images');
+if (fs.existsSync(imagesDir)) {
+  fs.rmSync(publicImagesDir, { recursive: true, force: true });
+  fs.mkdirSync(publicImagesDir, { recursive: true });
+  let copied = 0;
+  for (const file of fs.readdirSync(imagesDir)) {
+    const src = path.join(imagesDir, file);
+    if (!fs.statSync(src).isFile()) continue;
+    fs.copyFileSync(src, path.join(publicImagesDir, file));
+    copied += 1;
+  }
+  console.log(`Copied ${copied} image(s) to public/posts/images.`);
 }
 
 console.log(

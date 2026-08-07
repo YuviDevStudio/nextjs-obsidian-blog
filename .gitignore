@@ -41,6 +41,9 @@ lib/posts.json
 # Obsidian vault metadata
 posts/.obsidian/
 
+# generated mirror of post images (build-posts.js copies posts/images here)
+/public/posts/
+
 # local tooling / screenshots
 .worktrees/
 /after-move-verify.png
