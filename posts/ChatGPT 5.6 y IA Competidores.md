@@ -4,6 +4,9 @@ description: "Un análisis exhaustivo de las capacidades, variantes y mejoras de
 keywords: ["ChatGPT 5.6", "Inteligencia Artificial", "LLM", "GPT-4o", "Gemini", "ClaudeAI", "IA Generativa"]
 date: 2026-07-15
 tags: [inteligencia artificial, chatgpt, tecnologia, comparativa]
+categories: [Tecnología, Inteligencia Artificial]
+featured_image: /posts/images/chatgpt56-revolucion-portada.jpg
+alt: "Ilustración de una red neuronal que representa el análisis competitivo de ChatGPT 5.6 frente a otros modelos de IA"
 ---
 
 # La Revolución de ChatGPT 5.6: Análisis Competitivo y el Futuro de la IA Generativa

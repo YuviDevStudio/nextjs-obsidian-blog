@@ -4,6 +4,9 @@ description: "Un análisis exhaustivo en español de las capacidades de ChatGPT 
 date: 2026-07-14
 tags: [inteligencia artificial, chatgpt, tecnologia, comparativa]
 keywords: ["ChatGPT5_6", "GPT4o", "ComparativaIA", "ClaudeAI", "GeminiAdvanced", "LLM"]
+categories: [Tecnología, Inteligencia Artificial]
+featured_image: /posts/images/chatgpt56-nueva-era-portada.jpg
+alt: "Ilustración de una conversación con IA donde ChatGPT 5.6 compite con Claude, Gemini y Llama por el liderazgo de la IA generativa"
 ---
 
 # La Nueva Era de la IA Conversacional: Análisis Profundo de ChatGPT 5.6 y Competidores Estratégicos

@@ -27,6 +27,9 @@ export const metadata = {
   },
   description:
     'Blog en español sobre salud, tecnología, entretenimiento y más.',
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 /** Runs before paint so dark mode matches localStorage / system preference (no FOUC). */
