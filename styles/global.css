@@ -99,3 +99,11 @@ html.dark ::-webkit-scrollbar-thumb {
 html.dark ::-webkit-scrollbar-thumb:hover {
   background: #475569; /* slate-600 */
 }
+/* Hide horizontal scrollbar on the mobile featured carousel (native swipe) */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

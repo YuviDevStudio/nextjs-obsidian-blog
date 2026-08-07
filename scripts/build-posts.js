@@ -55,8 +55,19 @@ for (const fileName of fileNames) {
     ({ data } = matter(fileContents));
   } catch (err) {
     console.error(`Invalid front matter in ${fileName}: ${err.message}`);
+    if (/mapping pair|bad indentation|can not read/i.test(err.message)) {
+      console.error(
+        `  Hint: quote values that contain ":" (colons), e.g. title: "My Title: Subtitle"`
+      );
+    }
     errors += 1;
     continue;
+  }
+
+  if (!data.title) {
+    console.warn(
+      `Missing title in ${fileName} — slug will fall back to filename`
+    );
   }
 
   const id = slugify(data.title || fileName.replace(/\.md$/, ''));

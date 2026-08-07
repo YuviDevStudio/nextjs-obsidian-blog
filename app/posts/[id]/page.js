@@ -1,6 +1,7 @@
-import { getPostData, getAllPostIds } from '../../../lib/posts';
+import { getPostData, getAllPostIds, getRelatedPosts } from '../../../lib/posts';
 import Date from '../../components/date';
 import MarkdownRenderer from '../../components/markdown-renderer';
+import RelatedPosts from '../../components/relatedPosts';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -101,6 +102,9 @@ export default async function Post({ params }) {
         <div className="w-full">
           <MarkdownRenderer content={postData.content} />
         </div>
+
+        {/* Related posts */}
+        <RelatedPosts posts={getRelatedPosts(postData.id)} />
       </article>
 
       {/* Right Sidebar: Large Ad blocks (hidden on smaller screens) */}
