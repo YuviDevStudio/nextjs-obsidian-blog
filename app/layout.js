@@ -6,6 +6,7 @@ import SubNavbar from './components/sub-navbar';
 import { ThemeProvider } from './components/theme-provider';
 import { getAllTags, getSearchIndex } from '../lib/posts';
 import { Inter, Outfit } from 'next/font/google';
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -61,6 +62,7 @@ export default function RootLayout({ children }) {
           </main>
         </ThemeProvider>
       </body>
+      <GoogleAnalytics gaId="G-9K841MNERH" />
     </html>
   );
 }
