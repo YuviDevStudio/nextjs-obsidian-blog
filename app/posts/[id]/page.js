@@ -1,11 +1,19 @@
-import { getPostData, getAllPostIds, getRelatedPosts } from '../../../lib/posts';
+import {
+  getPostData,
+  getAllPostIds,
+  getRelatedPosts,
+} from '../../../lib/posts';
 import Date from '../../components/date';
 import MarkdownRenderer from '../../components/markdown-renderer';
 import RelatedPosts from '../../components/relatedPosts';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-
+import Script from 'next/script';
+import AdSterra300x250 from '../../components/adSterra300x250';
+import AdsterraAd from '../../components/adsterra';
+import AdsterraNative from '../../components/adsterraNative';
+import AdsterraNativeSidebar from '../../components/adsterraNativeSidebar';
 // Force static generation for post pages and provide static params at build time
 export const dynamic = 'force-static';
 
@@ -35,25 +43,37 @@ export default async function Post({ params }) {
 
   return (
     <div className="w-full flex flex-col xl:flex-row gap-8 justify-center items-start py-6">
-      
-      {/* Left Sidebar: Skyscraper Ad Placeholder (hidden on small viewports) */}
+      {/* Left Sidebar: Skyscraper Ad (hidden on small viewports) */}
       <aside className="hidden xl:flex flex-col w-[160px] sticky top-24 shrink-0 select-none">
-        <div className="h-[600px] w-[160px] border border-dashed border-slate-300 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/10 rounded-2xl flex flex-col items-center justify-center text-center p-3">
-          <span className="text-[9px] font-bold text-slate-400 dark:text-slate-500 tracking-widest uppercase mb-1">Publicidad</span>
-          <span className="text-xs text-slate-400 dark:text-slate-500">Ad (160x600)</span>
-        </div>
+        <AdsterraAd
+          variant="posts-160x600"
+          adKey="fa7e455ec598064d870403def8d5d90f"
+          invokeUrl="https://www.highperformanceformat.com/fa7e455ec598064d870403def8d5d90f/invoke.js"
+          width={160}
+          height={600}
+        />
       </aside>
 
       {/* Center Column: Main readable article content */}
       <article className="w-full max-w-[720px] flex-grow px-2 md:px-0">
-        
         {/* Navigation back */}
-        <Link 
-          href="/" 
+        <Link
+          href="/"
           className="inline-flex items-center text-xs font-semibold text-slate-400 hover:text-indigo-600 dark:text-slate-500 dark:hover:text-sky-400 mb-6 transition-colors !no-underline"
         >
-          <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+          <svg
+            className="w-4 h-4 mr-1"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M10 19l-7-7m0 0l7-7m-7 7h18"
+            ></path>
           </svg>
           Volver al inicio
         </Link>
@@ -65,7 +85,7 @@ export default async function Post({ params }) {
               {postData.tags.map((tag, idx) => {
                 const cap = tag.charAt(0).toUpperCase() + tag.slice(1);
                 return (
-                  <Link 
+                  <Link
                     key={idx}
                     href={`/tags/${encodeURIComponent(tag)}`}
                     className="px-2 py-0.5 text-xs font-semibold rounded bg-indigo-50/60 text-indigo-600 dark:bg-sky-500/10 dark:text-sky-400 hover:opacity-90 transition-opacity !no-underline"
@@ -81,7 +101,9 @@ export default async function Post({ params }) {
           </h1>
           <div className="flex items-center text-xs text-slate-400 dark:text-slate-500 font-medium">
             <span>Publicado el:</span>
-            <span className="ml-1 text-slate-500 dark:text-slate-400"><Date dateString={postData.date} /></span>
+            <span className="ml-1 text-slate-500 dark:text-slate-400">
+              <Date dateString={postData.date} />
+            </span>
           </div>
         </header>
 
@@ -103,26 +125,24 @@ export default async function Post({ params }) {
           <MarkdownRenderer content={postData.content} />
         </div>
 
+        {/* Native Banner (4:1) */}
+        <AdsterraNative />
+
         {/* Related posts */}
         <RelatedPosts posts={getRelatedPosts(postData.id)} />
       </article>
 
       {/* Right Sidebar: Large Ad blocks (hidden on smaller screens) */}
       <aside className="hidden lg:flex flex-col w-[300px] sticky top-24 shrink-0 gap-6 select-none">
-        
         {/* Banner Ad 1 */}
-        <div className="w-[300px] h-[250px] border border-dashed border-slate-300 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/10 rounded-2xl flex flex-col items-center justify-center text-center p-4">
-          <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 tracking-widest uppercase mb-1">Publicidad</span>
-          <span className="text-xs text-slate-400 dark:text-slate-500">Espacio reservado (300x250)</span>
-        </div>
-
-        {/* Banner Ad 2 */}
-        <div className="w-[300px] h-[600px] border border-dashed border-slate-300 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/10 rounded-2xl flex flex-col items-center justify-center text-center p-4">
-          <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 tracking-widest uppercase mb-1">Publicidad</span>
-          <span className="text-xs text-slate-400 dark:text-slate-500">Espacio reservado (300x600)</span>
-        </div>
+        <AdSterra300x250 variant="posts" />
+        {/* Banner Ad 2: Native Banner (4:1) */}
+        <AdsterraNativeSidebar />
       </aside>
-
+      <Script
+        src="https://pl30757502.effectivecpmnetwork.com/94/ff/05/94ff05bbc2e8b841806c99819695b650.js"
+        strategy="afterInteractive"
+      />
     </div>
   );
 }

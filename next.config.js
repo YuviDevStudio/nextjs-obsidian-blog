@@ -5,6 +5,7 @@ if (typeof globalThis !== 'undefined' && globalThis.localStorage && typeof globa
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  allowedDevOrigins: ['192.168.1.64'],
   async rewrites() {
     return [
       // Only rewrite single-segment root slugs (e.g. /my-post -> /posts/my-post)

@@ -68,7 +68,7 @@ const FeaturedPosts = ({ allPosts = [] }) => {
         <section className='my-6'>
             {/* Desktop: grid */}
             <div className='hidden lg:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-0'>
-                {featuredPosts.map((post, i) => renderPost(post, i === 0))}
+                {featuredPosts.map((post, i) => renderPost(post, true))}
             </div>
 
             {/* Mobile: carousel */}
@@ -95,7 +95,7 @@ const FeaturedPosts = ({ allPosts = [] }) => {
                                             src={post.featured_image}
                                             alt={post.title || ''}
                                             fill
-                                            sizes="100vw"
+                                            sizes="(min-width: 768px) 100vw, calc(100vw - 2rem)"
                                             priority={i === 0}
                                             className="object-cover transition-transform duration-500 scale-100 group-hover:scale-105"
                                         />

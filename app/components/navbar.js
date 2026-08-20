@@ -4,14 +4,12 @@ import Link from 'next/link';
 import ThemeToggle from './theme-toggle';
 import SearchBox from './search-box';
 import { useState, useEffect, useRef } from 'react';
-import { useTheme } from './theme-provider';
 
 export default function Navbar({ searchPosts = [] }) {
   const [navbarVisible, setNavbarVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const searchRef = useRef(null);
-  const { theme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -71,28 +69,28 @@ export default function Navbar({ searchPosts = [] }) {
     setIsMenuOpen((open) => !open);
   };
 
-  const searchInputClass = `p-2 pl-10 md:pl-11 w-full border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm ${theme === 'dark' ? 'bg-slate-800 text-white' : 'bg-slate-50 text-slate-900'} transition-all`;
+  const searchInputClass = `p-2 pl-10 md:pl-11 w-full border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm bg-slate-50 text-slate-900 dark:bg-slate-800 dark:text-white transition-all`;
 
   return (
     <>
-      <nav className={`sticky top-0 z-50 w-full transition-all duration-300 ease-in-out border-b backdrop-blur-md ${navbarVisible ? 'translate-y-0' : '-translate-y-full'} ${theme === 'dark' ? 'bg-slate-900/80 border-slate-800/80 shadow-slate-950/20' : 'bg-white/90 border-slate-200 shadow-slate-100/50'} shadow-sm`}>
-        <div className="w-full max-w-[1340px] mx-auto px-4 md:px-6 py-3 flex items-center justify-between">
+      <nav className={`sticky top-0 z-50 w-full transition-all duration-300 ease-in-out border-b backdrop-blur-md isolate ${navbarVisible ? 'translate-y-0' : '-translate-y-full'} bg-white/90 border-slate-200 shadow-slate-100/50 dark:bg-slate-900/80 dark:border-slate-800/80 dark:shadow-slate-950/20 shadow-sm`}>
+        <div className="w-full max-w-[1340px] mx-auto px-4 md:px-6 py-3 flex items-center justify-between gap-2 relative z-10">
           <div className="flex items-center flex-none">
             <button
               type="button"
               onClick={toggleMenu}
               aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
               aria-expanded={isMenuOpen}
-              className={`focus:outline-none p-1.5 rounded-lg transition-colors hover:bg-slate-100 dark:hover:bg-slate-800 ${theme === 'dark' ? 'text-slate-300 hover:text-white' : 'text-slate-600 hover:text-slate-900'}`}
+              className={`flex items-center justify-center cursor-pointer select-none touch-manipulation min-h-[44px] min-w-[44px] -ml-2 focus:outline-none p-2 rounded-lg transition-colors hover:bg-slate-100 active:bg-slate-200 dark:hover:bg-slate-800 dark:active:bg-slate-700 text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white`}
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <svg className="w-6 h-6 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
               </svg>
             </button>
           </div>
-          
-          <div className="flex-grow text-center flex justify-center">
-            <Link className="cursor-pointer !no-underline text-2xl font-bold tracking-wider font-display bg-gradient-to-r from-indigo-600 via-indigo-500 to-violet-600 dark:from-sky-400 dark:via-sky-300 dark:to-indigo-400 bg-clip-text text-transparent hover:opacity-90 transition-opacity" href="/">
+
+          <div className="flex-grow text-center flex justify-center min-w-0">
+            <Link className="cursor-pointer select-none touch-manipulation !no-underline text-2xl font-bold tracking-wider font-display bg-gradient-to-r from-indigo-600 via-indigo-500 to-violet-600 dark:from-sky-400 dark:via-sky-300 dark:to-indigo-400 bg-clip-text text-transparent hover:opacity-90 transition-opacity" href="/">
               JotaEDRA
             </Link>
           </div>
@@ -102,9 +100,9 @@ export default function Navbar({ searchPosts = [] }) {
               type="button"
               onClick={toggleMenu}
               aria-label="Buscar"
-              className={`flex items-center focus:outline-none p-1.5 rounded-lg transition-colors hover:bg-slate-100 dark:hover:bg-slate-800 ${theme === 'dark' ? 'text-slate-300 hover:text-white' : 'text-slate-600 hover:text-slate-900'}`}
+              className={`flex items-center justify-center cursor-pointer select-none touch-manipulation min-h-[44px] min-w-[44px] -mr-2 focus:outline-none p-2 rounded-lg transition-colors hover:bg-slate-100 active:bg-slate-200 dark:hover:bg-slate-800 dark:active:bg-slate-700 text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white`}
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <svg className="w-6 h-6 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
               </svg>
             </button>
@@ -123,7 +121,7 @@ export default function Navbar({ searchPosts = [] }) {
       <div
         ref={menuRef}
         id="site-menu"
-        className={`fixed top-0 left-0 w-[280px] sm:w-[350px] h-full ${theme === 'dark' ? 'bg-slate-900 border-r border-slate-800' : 'bg-white border-r border-slate-200'} transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out z-[60] shadow-2xl flex flex-col`}
+        className={`fixed top-0 left-0 w-[280px] sm:w-[350px] h-full bg-white border-r border-slate-200 dark:bg-slate-900 dark:border-slate-800 transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out z-[60] shadow-2xl flex flex-col`}
         aria-hidden={!isMenuOpen}
       >
         <div className="flex flex-col h-full">
@@ -137,7 +135,7 @@ export default function Navbar({ searchPosts = [] }) {
                 type="button"
                 onClick={toggleMenu}
                 aria-label="Cerrar menú"
-                className={`p-1.5 rounded-lg transition-colors hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none ${theme === 'dark' ? 'text-slate-400 hover:text-white' : 'text-slate-500 hover:text-slate-900'}`}
+                className={`p-1.5 rounded-lg transition-colors hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white`}
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>

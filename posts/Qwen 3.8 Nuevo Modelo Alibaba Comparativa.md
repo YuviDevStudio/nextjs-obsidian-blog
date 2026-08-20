@@ -1,95 +1,67 @@
 ---
-title: "Qwen 3.8: Qué Trae el Nuevo Modelo de Alibaba y Cómo se Compara con la Competencia"
-description: "Qwen 3.8 Max llegó como preview el 19 de julio de 2026 con 2.4 billones de parámetros. Te explicamos qué se sabe, qué falta confirmar y cómo se mide contra Kimi K3, Claude Fable 5 y GPT-5.6."
+title: "Qwen 3.8 de Alibaba: Todo sobre el modelo de 2.4 billones de parámetros y su comparativa técnica"
+description: "Alibaba lanza la preview de Qwen 3.8 Max con 2.4 billones de parámetros y arquitectura multimodal. Te contamos qué está confirmado frente a Kimi K3, Claude Fable y GPT-5.6."
 date: 2026-07-19
-tags: [inteligencia artificial, qwen, modelos de lenguaje, tecnologia, alibaba, comparativa]
-keywords: ["Qwen 3.8", "Qwen3.8 Max", "modelo de IA Alibaba", "Qwen vs Kimi K3", "Qwen vs Claude Fable 5", "mejores modelos de IA 2026", "comparativa LLM 2026", "2.4 billones de parametros"]
+tags: [inteligencia artificial, qwen, modelos de lenguaje, tecnologia, alibaba, comparativa, open source]
+keywords: ["Qwen 3.8", "Qwen 3.8 Max", "modelo de IA Alibaba", "Qwen vs Kimi K3", "Qwen vs Claude Fable 5", "mejores modelos de IA 2026", "comparativa LLM 2026", "2.4 billones de parametros"]
 categories: [Tecnología, Inteligencia Artificial]
 featured_image: /posts/images/qwen38-portada.jpg
-alt: "Portada del análisis de Qwen 3.8 Max frente a la competencia de modelos de IA en 2026"
+alt: "Microprocesador y arquitectura de hardware de computación para modelos de inteligencia artificial a gran escala"
 ---
 
-# Qwen 3.8: Qué Trae el Nuevo Modelo de Alibaba y Cómo se Compara con la Competencia
+# Qwen 3.8 de Alibaba: Todo sobre el modelo de 2.4 billones de parámetros y su comparativa técnica
 
-Alibaba presentó el 19 de julio de 2026 una vista previa de **Qwen 3.8 Max**, su modelo insignia más ambicioso hasta la fecha. La compañía asegura que es "el segundo mejor modelo del mundo", solo por detrás de Claude Fable 5 de Anthropic. El anuncio generó ruido de inmediato: 2.4 billones de parámetros, promesa de pesos abiertos (open weights) y un despliegue multimodal completo.
+Alibaba ha liberado la vista previa de acceso temprano de **Qwen 3.8 Max**, el modelo insignia más ambicioso de su división de inteligencia artificial. Con una cifra declarada de **2.4 billones de parámetros totales** y un enfoque multimodal nativo de extremo a extremo, el gigante tecnológico asiático busca competir directamente en la cúspide del rendimiento global junto a **Claude Fable 5 (Anthropic)** y **Kimi K3 (Moonshot AI)**.
 
-![[qwen38-portada.jpg]]
+Sin embargo, como suele ocurrir en la industria de la IA, resulta fundamental separar los anuncios promocionales de los datos técnicos verificados. En este análisis repasamos qué especificaciones están confirmadas, qué aspectos siguen pendientes de auditoría independiente y cómo se mide frente a los principales referentes del sector en 2026.
 
-Pero hay un detalle que conviene enfatizar desde el principio: **Qwen 3.8 aún no ha publicado benchmarks oficiales**. Es un preview de acceso temprano, no un lanzamiento con tarjeta técnica completa. En este análisis repasamos qué está confirmado, qué es solo promesa y cómo se posiciona contra los verdaderos rivales del momento.
+## Qué sabemos con certeza sobre Qwen 3.8 Max
 
-## Lo que sabemos con certeza
+Qwen 3.8 Max-Preview está disponible en fase de evaluación a través del programa *Token Plan* de Alibaba Cloud y en sus entornos de desarrollo agéntico Qoder y QoderWork. Durante esta fase preliminar, la compañía ofrece descuentos agresivos que reducen el coste de llamada hasta en un 90% para desarrolladores seleccionados.
 
-Qwen 3.8 Max-Preview está **disponible hoy** a través de tres canales de Alibaba: el Token Plan (suscripción), y las plataformas de agentes Qoder y QoderWork. Durante el periodo de prueba, Alibaba ofrece el acceso a cerca del 10% del precio estándar, con tarifas nocturnas que llegan a descontar hasta un 98%.
+Las características principales confirmadas incluyen:
 
-El modelo es **multimodal**. Procesa texto, imágenes, video y documentos dentro de un mismo sistema. Según Shuai Bai, desarrollador del equipo Qwen, esta es la primera vez que logran un modelo multimodal por encima de un billón de parámetros. Esa escala es el verdadero titular.
+- **Procesamiento multimodal nativo:** Capacidad para analizar simultáneamente flujos de texto, imágenes de alta resolución, vídeo y documentos estructurados complejos (PDFs técnicos con tablas incrustadas) dentro de un único grafo computacional.
+- **Escala de parámetros:** Con 2.4 billones de parámetros brutos, se sitúa como el segundo modelo público de mayor envergadura conocido, sólo por detrás de Kimi K3 (2.8 billones).
+- **Arquitectura de Mezcla de Expertos (*MoE*):** Diseñada para activar únicamente subredes especializadas por cada token generado, conteniendo el consumo energético durante la inferencia.
 
-La cifra que repiten todos los medios es la de **2.4 billones de parámetros totales**. Si se confirma, sería el segundo modelo más grande conocido públicamente, solo por detrás de Kimi K3 (2.8 billones) de Moonshot AI, otra empresa china en la que Alibaba tiene participación.
+![Entorno de desarrollo y pruebas de modelos multimodales con visión artificial](/posts/images/qwen38-multimodal.jpg)
 
-## Lo que falta por confirmar
+## Datos técnicos pendientes de confirmación oficial
 
-Aquí es donde conviene poner el pie en el freno. Alibaba no ha publicado:
+Para una evaluación rigurosa en entornos de producción, la comunidad de ingeniería continúa a la espera de datos clave que Alibaba aún no ha publicado en su documentación técnica:
 
-- Una tabla de benchmarks independiente.
-- El número de **parámetros activos** (clave en modelos Mixture-of-Experts).
-- Los términos de licencia ni una fecha exacta de los pesos abiertos.
-- Una tarifa oficial por token fuera del Token Plan.
+1. **Tabla de benchmarks auditada externamente:** Aún no se disponen de métricas verificadas por terceros en bancos de pruebas como *SWE-bench Verified*, *Terminal-Bench 2.0* o *GPQA Diamond*.
+2. **Número de expertos y parámetros activos por token:** En arquitecturas MoE, la eficiencia real depende de cuántos millones de parámetros se encienden en cada consulta.
+3. **Términos de licencia y fecha de pesos abiertos (*Open Weights*):** Aunque la familia Qwen tiene un excelente historial de liberación de pesos en Hugging Face, la versión 3.8 Max se encuentra de momento en formato cerrado bajo API.
 
-Ese último punto importa más de lo que parece. Un modelo con 2.4 billones de parámetros totales puede activar solo una fracción por token gracias a la arquitectura MoE (Mixture-of-Experts). Sin saber cuántos millones se encienden en cada consulta, no sabemos cuánto cuesta ejecutarlo ni si alguien podrá alojarlo en sus propios servidores.
+> **Referencia de su antecesor:** Qwen 3.7-Max alcanzó 92.4 en GPQA Diamond, 80.4% en SWE-bench y una ventana de 1 millón de tokens. Es previsible que la serie 3.8 supere estos umbrales una vez se completen las auditorías públicas.
 
-> **Dato clave**: Qwen 3.7-Max, el modelo anterior y sí documentado, alcanzó 92.4 en GPQA Diamond, 80.4% en SWE-bench Verified y 69.7 en Terminal-Bench 2.0, con una ventana de contexto de 1 millón de tokens. Qwen 3.8 debería superarlo, pero por ahora es una expectativa, no un dato medido.
+## Comparativa con los rivales directos
 
-![[qwen38-multimodal.jpg]]
+### Qwen 3.8 frente a Kimi K3 (Moonshot AI)
+Kimi K3 (lanzado en julio de 2026 con 2.8 billones de parámetros, activación de 16 sobre 896 expertos y pesos abiertos bajo Modified MIT) representa el competidor chino más directo. En este momento, Kimi K3 cuenta con la ventaja de ofrecer mayor transparencia en sus resultados de benchmark y un repositorio de pesos accesible para investigación.
 
-## Qwen 3.8 vs. Kimi K3
+### Qwen 3.8 frente a Claude Fable 5 (Anthropic)
+Claude Fable 5 mantiene el liderazgo en razonamiento abstracto, redacción matizada y resolución de problemas de ingeniería complejos. No obstante, la ventaja histórica de la familia Qwen radica en su relación coste-rendimiento: mientras los modelos de Anthropic rondan los $10.00 por millón de tokens de entrada, Alibaba suele posicionar sus APIs en una franja cercana a $1.25 / 1M tokens.
 
-La comparación más natural es con **Kimi K3**, de Moonshot AI. Ambos son modelos chinos, ambos superan los 2 billones de parámetros y ambos llegaron en julio de 2026.
+### Qwen 3.8 frente a Gemini 3.7 Flash
+Mientras que [[Gemini 3.7 Flash Nuevo Modelo Google Agosto 2026 Analisis|Gemini 3.7 Flash]] ha consolidado el liderazgo en generación de código web al recortar sus precios a $0.75/$3.75, Qwen 3.8 apunta a cargas de trabajo que demandan razonamiento masivo y multimodalidad densa en infraestructuras compatibles con el ecosistema de código abierto.
 
-Kimi K3 salió el 16 de julio con 2.8 billones de parámetros, arquitectura MoE que activa 16 de 896 expertos por token, contexto de 1 millón de tokens y visión nativa. Sus cifras verificadas incluyen 93.5 en GPQA Diamond y 88.3 en Terminal-Bench 2.1. Moonshot prometió pesos abiertos bajo licencia Modified MIT para el 27 de julio.
+![Métricas y análisis de costes por millón de tokens en entornos de prueba de IA](/posts/images/qwen38-benchmarks.jpg)
 
-La diferencia estratégica: **Kimi K3 ya tiene una hoja de ruta de código abierto con fecha**, mientras que Qwen 3.8 solo dice "pronto". Si Alibaba cumple, Qwen 3.8 sería el mayor modelo de pesos abiertos de la historia en términos de ecosistema, pero hoy Kimi K3 va adelante en transparencia técnica.
+## Tabla comparativa de modelos de gran escala
 
-## Qwen 3.8 vs. Claude Fable 5
+| Modelo | Parámetros Totales | Ventana de Contexto | Política de Pesos | Coste Aprox. Entrada (1M tokens) |
+| :--- | :--- | :--- | :--- | :--- |
+| **Qwen 3.8 Max (Preview)** | 2.4B (reclamado) | Por confirmar | Prometido en fase pública | ~10% tarifa de prueba |
+| **Kimi K3** | 2.8B (16/896 expertos) | 1.000.000 tokens | **Pesos abiertos (Mod. MIT)** | $3.00 |
+| **Claude Fable 5** | No divulgado | 1.000.000 tokens | Cerrado (API) | $10.00 |
+| **Gemini 3.7 Flash** | No divulgado | 1.000.000 tokens | Cerrado (API) | **$0.75** |
+| **[[Grok 4.6 xAI Nuevo Modelo Agosto 2026 Analisis|Grok 4.6]]** | ~1.8B (estimado) | **2.000.000 tokens** | Cerrado (API) | $5.00 |
 
-Claude Fable 5, de Anthropic, es el rival que Alibaba nombra directamente. Fable 5 salió en junio de 2026 y lidera gran parte de los benchmarks de razonamiento y trabajo de conocimiento. En la comparativa pública de 35 pruebas que circula, Fable 5 gana 22 y Kimi K3 12.
+## Criterio editorial y recomendaciones
 
-Qwen 3.8 **no ha publicado cifras**, así que cualquier ranking que lo ponga "segundo" es, por ahora, una afirmación de marketing. Lo realista: es plausible que Qwen 3.8 lidere en algunos benchmarks de razonamiento (su antecesor ya estaba a dos puntos del modelo mundial en GPQA), pero cerrar la brecha de 15 puntos que Fable 5 mantiene en SWE-bench Verified en una sola generación sería excepcional.
+La llegada de Qwen 3.8 Max confirma la enorme velocidad con la que los laboratorios tecnológicos asiáticos están cerrando la brecha con los referentes occidentales en modelos de frontera.
 
-El punto fuerte histórico de Qwen no es liderar tablas, sino entregar cerca del 90% de la calidad frontier al 15% del costo. Qwen 3.7-Max costaba 1.25 dólares por millón de tokens de entrada; Fable 5 cobra 10. Esa brecha de precio es el arma real de Alibaba.
-
-## Qwen 3.8 vs. GPT-5.6
-
-OpenAI mantiene en carrera a **GPT-5.6 Sol** y GPT-5.5. En el índice de inteligencia de Artificial Analysis, GPT-5.6 Sol marca 59 y Fable 5 cerca de 60, mientras Kimi K3 se queda en 57. Qwen 3.8 no aparece porque no hay datos.
-
-Lo que sí sabemos es que la estrategia de Alibaba apunta a un público distinto: desarrolladores que quieren calidad frontier sin la factura de los laboratorios occidentales. Si Qwen 3.8 mantiene el posicionamiento de precio de su antecesor, será la opción más barata entre los modelos de escala extrema.
-
-![[qwen38-benchmarks.jpg]]
-
-## Una tabla rápida para orientarte
-
-| Modelo | Parámetros | Contexto | Pesos abiertos | Precio aprox. (entrada) |
-| --- | --- | --- | --- | --- |
-| Qwen 3.8 Max (preview) | 2.4B (reclamado) | por confirmar | prometido "pronto" | 10% en prueba |
-| Qwen 3.7-Max | no divulgado | 1M tokens | cerrado | $1.25 / M |
-| Kimi K3 | 2.8B (16/896 expertos) | 1M tokens | sí (27 jul) | $3 / M |
-| Claude Fable 5 | no divulgado | 1M tokens | cerrado | $10 / M |
-| GPT-5.6 Sol | no divulgado | no divulgado | cerrado | $5 / M |
-
-*Nota: "B" = billones. Las cifras de Qwen 3.8 sin benchmark verificado deben tratarse como promesas hasta que Alibaba publique la tarjeta técnica.*
-
-## Nuestro criterio
-
-Qwen 3.8 es real, es grande y es accesible como preview. Eso no se debate. Pero repetir como hecho el "segundo mejor del mundo" antes de ver una sola tabla es precipitado. El patrón de Alibaba en 2026 ha sido lanzar un Max nuevo cada cuatro a seis semanas, así que un Qwen 3.8 en julio, después del 3.7 en mayo, encaja perfecto en su calendario.
-
-Tres señales nos dirán si la promesa es sólida:
-
-1. **Una publicación oficial del equipo Qwen** con tabla de benchmarks, como la de 3.7 y 3.6.
-2. **El número de parámetros activos**, no solo el total de 2.4 billones.
-3. **Un repositorio en Hugging Face con licencia real**, si la promesa de pesos abiertos es verdad.
-
-Mientras tanto, el modelo verificado y usable hoy sigue siendo Qwen 3.7-Max. Si buscas potencia frontier comprobada, Fable 5 y Kimi K3 ya tienen números sobre la mesa. Qwen 3.8 promete, y la promesa suena grande.
-
-## Conclusión
-
-El nuevo Qwen 3.8 marca el ritmo de la carrera de escala entre los laboratorios chinos. Su llegada, días después de Kimi K3, confirma que el frente de la IA ya no se discute solo en California. Multimodal, masivo y (se espera) abierto, el modelo de Alibaba puede redefinir cuánto cuesta acceder a capacidad de primer nivel.
-
-Pero la prudencia manda. Sin benchmarks, sin licencia y sin precio definitivo, Qwen 3.8 es hoy una apuesta prometedora, no una certeza. Te recomendamos probarlo en su preview al 10% y, sobre todo, esperar a que Alibaba publique la tarjeta técnica antes de reconstruir tu flujo de trabajo a su alrededor. Cuando lo haga, aquí actualizaremos este análisis con los datos reales.
+Para desarrolladores y equipos técnicos, la recomendación actual es aprovechar los precios promocionales de la fase de preview para realizar pruebas de concepto exploratorias, manteniendo como entornos de producción estables modelos plenamente documentados como Qwen 3.7-Max o Kimi K3 hasta la publicación de la ficha técnica definitiva.
