@@ -117,14 +117,14 @@ export default function Page() {
         </aside>
       </div>
 
-      <Script
+      {/* <Script
         src="https://indefinitelynutmegbile.com/43/e5/3b/43e53bdd9b809f2c4f8d75b9182cd75e.js"
         strategy="afterInteractive"
       />
       <Script
         src="https://pl30757502.effectivecpmnetwork.com/94/ff/05/94ff05bbc2e8b841806c99819695b650.js"
         strategy="afterInteractive"
-      />
+      /> */}
 
       {/* Native Banner (4:1) */}
       <AdsterraNative />
