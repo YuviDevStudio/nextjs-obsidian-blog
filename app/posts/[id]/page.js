@@ -114,7 +114,9 @@ export default async function Post({ params }) {
               src={postData.featured_image}
               alt={postData.title || ''}
               fill
-              priority
+              sizes="(max-width: 640px) 100vw, 720px"
+              loading="eager"
+              fetchPriority="high"
               className="object-cover"
             />
           </div>

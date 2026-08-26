@@ -42,7 +42,7 @@ const FeaturedPosts = ({ allPosts = [] }) => {
                         alt={title || ''}
                         fill
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        priority={isPriority}
+                        loading={isPriority ? 'eager' : 'lazy'}
                         className="object-cover transition-transform duration-500 scale-100 group-hover:scale-105"
                     />
                     ) : (
@@ -96,7 +96,7 @@ const FeaturedPosts = ({ allPosts = [] }) => {
                                             alt={post.title || ''}
                                             fill
                                             sizes="(min-width: 768px) 100vw, calc(100vw - 2rem)"
-                                            priority={i === 0}
+                                            loading={i === 0 ? 'eager' : 'lazy'}
                                             className="object-cover transition-transform duration-500 scale-100 group-hover:scale-105"
                                         />
                                         ) : (

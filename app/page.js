@@ -104,19 +104,19 @@ export default function Page() {
 
           {/* Ad Space: Adsterra 300x250 */}
           <div className="w-full min-h-[250px] flex flex-col items-center justify-center">
-            {/* <AdSterra300x250 variant="home" /> */}
-            {/* <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 tracking-widest uppercase mb-2 select-none">
+            <AdSterra300x250 variant="home" />
+            <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 tracking-widest uppercase mb-2 select-none">
               Publicidad
             </span>
             <div
               id="adsterra-300x250-home"
               className="w-[300px] h-[250px] max-w-full overflow-hidden"
             />
-            div{' '} */}
           </div>
         </aside>
       </div>
 
+      {/* Adsterra popunder and social banner scripts
       <Script
         src="https://indefinitelynutmegbile.com/43/e5/3b/43e53bdd9b809f2c4f8d75b9182cd75e.js"
         strategy="afterInteractive"
@@ -124,7 +124,7 @@ export default function Page() {
       <Script
         src="https://pl30757502.effectivecpmnetwork.com/94/ff/05/94ff05bbc2e8b841806c99819695b650.js"
         strategy="afterInteractive"
-      />
+      /> */}
 
       {/* Native Banner (4:1) */}
       <AdsterraNative />
