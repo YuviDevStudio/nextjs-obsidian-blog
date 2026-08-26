@@ -27,7 +27,7 @@ export const metadata = {
     template: '%s | JotaEDRA',
   },
   description:
-    'Blog en español sobre salud, tecnología, entretenimiento y más.',
+    'Aquí se habla de IA, tecnología, salud, noticias, entretenimiento y más...',
   icons: {
     icon: '/favicon.ico',
   },

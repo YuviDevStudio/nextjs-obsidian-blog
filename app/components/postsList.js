@@ -29,7 +29,7 @@ export default function PostsList({ posts = [], title = 'Lo Último' }) {
                       alt={postTitle || ''}
                       fill
                       sizes="(max-width: 640px) 100vw, 200px"
-                      priority={index === 0}
+                      loading={index === 0 ? 'eager' : 'lazy'}
                       className="object-cover transition-transform duration-500 scale-100 group-hover:scale-105"
                     />
                   </div>
