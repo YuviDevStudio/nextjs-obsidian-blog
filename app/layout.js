@@ -29,7 +29,7 @@ export const metadata = {
   description:
     'Aquí se habla de IA, tecnología, salud, noticias, entretenimiento y más...',
   icons: {
-    icon: '/favicon.ico',
+    icon: '/favicon.png',
   },
 };
 

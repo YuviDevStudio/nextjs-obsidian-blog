@@ -141,10 +141,10 @@ export default async function Post({ params }) {
         {/* Banner Ad 2: Native Banner (4:1) */}
         <AdsterraNativeSidebar />
       </aside>
-      <Script
+      {/* <Script
         src="https://pl30757502.effectivecpmnetwork.com/94/ff/05/94ff05bbc2e8b841806c99819695b650.js"
         strategy="afterInteractive"
-      />
+      /> */}
     </div>
   );
 }

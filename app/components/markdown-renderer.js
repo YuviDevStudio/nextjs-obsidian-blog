@@ -55,6 +55,8 @@ export default function MarkdownRenderer({ content }) {
             <img 
               src={src}
               alt={alt || ''}
+              loading="lazy"
+              decoding="async"
               className="mx-auto rounded-2xl shadow-md dark:shadow-slate-950/50 border border-slate-200/20 dark:border-slate-800/45 max-w-full md:max-w-[85%] lg:max-w-[70%] max-h-[480px] object-cover transition-all hover:scale-[1.01] duration-300"
               {...props}
             />

@@ -6,6 +6,13 @@ if (typeof globalThis !== 'undefined' && globalThis.localStorage && typeof globa
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   allowedDevOrigins: ['192.168.1.64'],
+  images: {
+    // The Cloudflare Pages deployment does not run the Next.js image optimizer
+    // (it returns the original bytes unchanged). Post images are pre-optimized
+    // to WebP by scripts/optimize-images.js, so we serve them directly. This
+    // also removes the redundant /_next/image redirect hop.
+    unoptimized: true,
+  },
   async rewrites() {
     return [
       // Only rewrite single-segment root slugs (e.g. /my-post -> /posts/my-post)
