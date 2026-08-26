@@ -22,7 +22,7 @@ export default function AdsterraNative() {
       <div id={`container-${KEY}`} className="w-full max-w-[728px]" />
       <Script
         src={`https://pl30757504.effectivecpmnetwork.com/${KEY}/invoke.js`}
-        strategy="afterInteractive"
+        strategy="lazyOnload"
       />
     </div>
   );

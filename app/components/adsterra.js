@@ -52,6 +52,7 @@ export default function AdsterraAd({
           style={{ width, height, border: 0, display: 'block' }}
           scrolling="no"
           frameBorder="0"
+          loading="lazy"
           title="Publicidad"
         />
       </div>

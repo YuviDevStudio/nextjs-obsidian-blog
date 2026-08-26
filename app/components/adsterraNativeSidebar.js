@@ -61,6 +61,7 @@ export default function AdsterraNativeSidebar() {
         style={{ width: 300, height: 250, border: 0, display: 'block' }}
         scrolling="no"
         frameBorder="0"
+        loading="lazy"
         title="Publicidad"
       />
     </div>

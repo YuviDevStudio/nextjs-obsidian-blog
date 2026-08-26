@@ -25,27 +25,42 @@ export default function AdSterra300x250({ variant = 'home' }) {
     const container = containerRef.current;
     if (!container || container.querySelector('iframe')) return; // idempotent
 
-    // 1) Set the global options that invoke.js will read.
-    window.atOptions = {
-      key: '42723bf5162f297557501cd8d7ccc692',
-      format: 'iframe',
-      height: 250,
-      width: 300,
-      params: {},
+    // Defer to idle time so the ad script doesn't compete with the initial
+    // render/hydration for the main thread (keeps Total Blocking Time low).
+    const run = () => {
+      if (container.querySelector('iframe')) return;
+      // 1) Set the global options that invoke.js will read.
+      window.atOptions = {
+        key: '42723bf5162f297557501cd8d7ccc692',
+        format: 'iframe',
+        height: 250,
+        width: 300,
+        params: {},
+      };
+
+      // 2) Append the loader script at this exact container location.
+      const s = document.createElement('script');
+      s.async = true;
+      s.src =
+        'https://indefinitelynutmegbile.com/42723bf5162f297557501cd8d7ccc692/invoke.js';
+      container.appendChild(s);
+      cleanup = () => {
+        s.remove();
+        if (container.querySelector('iframe')) {
+          container.querySelector('iframe').remove();
+        }
+      };
     };
 
-    // 2) Append the loader script at this exact container location.
-    const s = document.createElement('script');
-    s.async = true;
-    s.src =
-      'https://indefinitelynutmegbile.com/42723bf5162f297557501cd8d7ccc692/invoke.js';
-    container.appendChild(s);
+    let cleanup;
+    let handle;
+    const ric = window.requestIdleCallback || ((cb) => setTimeout(cb, 1500));
+    handle = ric(run);
 
     return () => {
-      s.remove();
-      if (container.querySelector('iframe')) {
-        container.querySelector('iframe').remove();
-      }
+      if (handle && window.cancelIdleCallback) window.cancelIdleCallback(handle);
+      else clearTimeout(handle);
+      if (cleanup) cleanup();
     };
   }, [variant]);
 
