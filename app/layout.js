@@ -57,6 +57,12 @@ export default function RootLayout({ children }) {
       className={`${inter.variable} ${outfit.variable}`}
     >
       <body>
+        {/* Warm up connections to third-party ad/analytics hosts so their
+            scripts start fetching sooner without blocking the main thread. */}
+        <link rel="preconnect" href="https://pl30757504.effectivecpmnetwork.com" />
+        <link rel="preconnect" href="https://indefinitelynutmegbile.com" />
+        <link rel="preconnect" href="https://www.highperformanceformat.com" />
+        <link rel="preconnect" href="https://static.cloudflareinsights.com" />
         {/* Inline before interactive UI so dark class is set before first paint when possible */}
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <ThemeProvider>
