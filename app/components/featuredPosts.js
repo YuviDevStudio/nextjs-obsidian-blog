@@ -1,8 +1,8 @@
 'use client'
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useCallback, useRef } from 'react';
+import ResponsiveImage from './responsive-image';
 
 const FeaturedPosts = ({ allPosts = [] }) => {
     const featuredPosts = allPosts.slice(0, 3);
@@ -37,13 +37,12 @@ const FeaturedPosts = ({ allPosts = [] }) => {
             <div key={id} className='group relative h-[320px] rounded-2xl overflow-hidden shadow-md dark:shadow-slate-950/40 border border-slate-200/20 dark:border-slate-800/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl bg-slate-100 dark:bg-slate-900'>
                 <Link href={`/${id}`} className='relative block w-full h-full'>
                     {featured_image ? (
-                    <Image
+                    <ResponsiveImage
                         src={featured_image}
                         alt={title || ''}
-                        fill
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        loading={isPriority ? 'eager' : 'lazy'}
-                        className="object-cover transition-transform duration-500 scale-100 group-hover:scale-105"
+                        priority={isPriority}
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 scale-100 group-hover:scale-105"
                     />
                     ) : (
                         <div className="w-full h-full bg-gradient-to-br from-indigo-500/30 to-sky-500/30" />
@@ -91,13 +90,12 @@ const FeaturedPosts = ({ allPosts = [] }) => {
                                 <div className='group relative h-[320px] rounded-2xl overflow-hidden shadow-md dark:shadow-slate-950/40 border border-slate-200/20 dark:border-slate-800/40 transition-all duration-300 bg-slate-100 dark:bg-slate-900'>
                                     <Link href={`/${post.id}`} className='relative block w-full h-full'>
                                         {post.featured_image ? (
-                                        <Image
+                                        <ResponsiveImage
                                             src={post.featured_image}
                                             alt={post.title || ''}
-                                            fill
                                             sizes="(min-width: 768px) 100vw, calc(100vw - 2rem)"
-                                            loading={i === 0 ? 'eager' : 'lazy'}
-                                            className="object-cover transition-transform duration-500 scale-100 group-hover:scale-105"
+                                            priority={i === 0}
+                                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 scale-100 group-hover:scale-105"
                                         />
                                         ) : (
                                             <div className="w-full h-full bg-gradient-to-br from-indigo-500/30 to-sky-500/30" />

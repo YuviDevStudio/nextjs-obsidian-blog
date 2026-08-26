@@ -7,8 +7,8 @@ import Date from '../../components/date';
 import MarkdownRenderer from '../../components/markdown-renderer';
 import RelatedPosts from '../../components/relatedPosts';
 import { notFound } from 'next/navigation';
-import Image from 'next/image';
 import Link from 'next/link';
+import ResponsiveImage from '../../components/responsive-image';
 import Script from 'next/script';
 import AdSterra300x250 from '../../components/adSterra300x250';
 import AdsterraAd from '../../components/adsterra';
@@ -110,14 +110,12 @@ export default async function Post({ params }) {
         {/* Hero image for the post */}
         {postData.featured_image && (
           <div className="relative w-full h-[240px] sm:h-[340px] rounded-2xl overflow-hidden mb-8 border border-slate-200/20 dark:border-slate-800/40">
-            <Image
+            <ResponsiveImage
               src={postData.featured_image}
               alt={postData.title || ''}
-              fill
               sizes="(max-width: 640px) 100vw, 720px"
-              loading="eager"
-              fetchPriority="high"
-              className="object-cover"
+              priority
+              className="absolute inset-0 w-full h-full object-cover"
             />
           </div>
         )}
