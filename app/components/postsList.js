@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import Date from './date'
+import ResponsiveImage from './responsive-image'
 
 export default function PostsList({ posts = [], title = 'Lo Último' }) {
   return (
@@ -24,13 +24,12 @@ export default function PostsList({ posts = [], title = 'Lo Último' }) {
                 
                 {featured_image && (
                   <div className="relative w-full h-[200px] sm:w-[200px] sm:h-[130px] rounded-xl overflow-hidden shrink-0 bg-white dark:bg-slate-800">
-                    <Image
+                    <ResponsiveImage
                       src={featured_image}
                       alt={postTitle || ''}
-                      fill
                       sizes="(max-width: 640px) 100vw, 200px"
-                      loading={index === 0 ? 'eager' : 'lazy'}
-                      className="object-cover transition-transform duration-500 scale-100 group-hover:scale-105"
+                      priority={index === 0}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 scale-100 group-hover:scale-105"
                     />
                   </div>
                 )}

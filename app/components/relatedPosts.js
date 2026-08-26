@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import Link from 'next/link';
+import ResponsiveImage from './responsive-image';
 
 const RelatedPosts = ({ posts = [] }) => {
   if (!posts || posts.length === 0) return null;
@@ -33,12 +33,11 @@ const RelatedPosts = ({ posts = [] }) => {
                 className="relative block w-full h-full !no-underline"
               >
                 {post.featured_image ? (
-                  <Image
+                  <ResponsiveImage
                     src={post.featured_image}
                     alt={post.title || ''}
-                    fill
                     sizes="(max-width: 640px) 240px, 260px"
-                    className="object-cover transition-transform duration-500 scale-100 group-hover:scale-105"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 scale-100 group-hover:scale-105"
                   />
                 ) : (
                   <div className="w-full h-full bg-gradient-to-br from-indigo-500/30 to-sky-500/30" />

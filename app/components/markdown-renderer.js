@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import Link from 'next/link';
 import CodeBlock from './code-block';
+import ResponsiveImage from './responsive-image';
 
 function isExternalHref(href) {
   if (!href) return false;
@@ -49,24 +50,36 @@ export default function MarkdownRenderer({ content }) {
         blockquote: ({ ...props }) => (
           <blockquote className="border-l-4 border-indigo-500/80 dark:border-sky-500/80 pl-4 py-1.5 my-6 italic bg-slate-50/50 dark:bg-slate-900/40 text-slate-500 dark:text-slate-400 rounded-r-lg" {...props} />
         ),
-        img: ({ src, alt, ...props }) => (
-          <span className="block my-8 text-center">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img 
-              src={src}
-              alt={alt || ''}
-              loading="lazy"
-              decoding="async"
-              className="mx-auto rounded-2xl shadow-md dark:shadow-slate-950/50 border border-slate-200/20 dark:border-slate-800/45 max-w-full md:max-w-[85%] lg:max-w-[70%] max-h-[480px] object-cover transition-all hover:scale-[1.01] duration-300"
-              {...props}
-            />
-            {alt ? (
-              <span className="block text-xs md:text-sm text-slate-400 dark:text-slate-500 mt-3 font-medium italic">
-                {alt}
-              </span>
-            ) : null}
-          </span>
-        ),
+        img: ({ src, alt, ...props }) => {
+          const isLocal = typeof src === 'string' && /^\/posts\/images\/[^/]+\.webp$/.test(src);
+          return (
+            <span className="block my-8 text-center">
+              {isLocal ? (
+                <ResponsiveImage
+                  src={src}
+                  alt={alt || ''}
+                  sizes="(max-width: 768px) 100vw, 720px"
+                  className="mx-auto rounded-2xl shadow-md dark:shadow-slate-950/50 border border-slate-200/20 dark:border-slate-800/45 max-w-full md:max-w-[85%] lg:max-w-[70%] max-h-[480px] object-cover transition-all hover:scale-[1.01] duration-300"
+                />
+              ) : (
+                /* eslint-disable-next-line @next/next/no-img-element */
+                <img
+                  src={src}
+                  alt={alt || ''}
+                  loading="lazy"
+                  decoding="async"
+                  className="mx-auto rounded-2xl shadow-md dark:shadow-slate-950/50 border border-slate-200/20 dark:border-slate-800/45 max-w-full md:max-w-[85%] lg:max-w-[70%] max-h-[480px] object-cover transition-all hover:scale-[1.01] duration-300"
+                  {...props}
+                />
+              )}
+              {alt ? (
+                <span className="block text-xs md:text-sm text-slate-400 dark:text-slate-500 mt-3 font-medium italic">
+                  {alt}
+                </span>
+              ) : null}
+            </span>
+          );
+        },
         code({ className, children, ...props }) {
           const match = /language-(\w+)/.exec(className || '');
           const codeText = String(children).replace(/\n$/, '');
