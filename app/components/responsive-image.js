@@ -8,7 +8,7 @@
  * variants are derived automatically. For non-local/optimized sources it simply
  * renders the given `src`.
  */
-const WIDTHS = [640, 960, 1280];
+const WIDTHS = [480, 640, 960, 1280];
 
 export default function ResponsiveImage({
   src,

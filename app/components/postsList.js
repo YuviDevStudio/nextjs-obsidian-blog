@@ -28,7 +28,7 @@ export default function PostsList({ posts = [], title = 'Lo Último' }) {
                       src={featured_image}
                       alt={postTitle || ''}
                       sizes="(max-width: 640px) 100vw, 200px"
-                      priority={index === 0}
+                      priority={false}
                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 scale-100 group-hover:scale-105"
                     />
                   </div>

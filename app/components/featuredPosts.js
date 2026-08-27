@@ -67,7 +67,7 @@ const FeaturedPosts = ({ allPosts = [] }) => {
         <section className='my-6'>
             {/* Desktop: grid */}
             <div className='hidden lg:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-0'>
-                {featuredPosts.map((post, i) => renderPost(post, true))}
+                {featuredPosts.map((post) => renderPost(post, false))}
             </div>
 
             {/* Mobile: carousel */}

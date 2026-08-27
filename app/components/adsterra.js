@@ -25,6 +25,8 @@
  *     height={600}
  *   />
  */
+import { useState, useEffect, useRef } from 'react';
+
 export default function AdsterraAd({
   adKey,
   format = 'iframe',
@@ -32,7 +34,52 @@ export default function AdsterraAd({
   height = 250,
   invokeUrl,
   showLabel = true,
+  lazy = true,
 }) {
+  const [shouldRender, setShouldRender] = useState(!lazy);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    if (!lazy) return;
+
+    let observer;
+    let idleHandle;
+    let timer;
+
+    const loadAd = () => {
+      setShouldRender(true);
+    };
+
+    if (typeof IntersectionObserver !== 'undefined' && containerRef.current) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0]?.isIntersecting) {
+            if ('requestIdleCallback' in window) {
+              idleHandle = window.requestIdleCallback(loadAd, { timeout: 2500 });
+            } else {
+              timer = setTimeout(loadAd, 800);
+            }
+            observer.disconnect();
+          }
+        },
+        { rootMargin: '300px' }
+      );
+      observer.observe(containerRef.current);
+    } else {
+      if ('requestIdleCallback' in window) {
+        idleHandle = window.requestIdleCallback(loadAd, { timeout: 2500 });
+      } else {
+        timer = setTimeout(loadAd, 1200);
+      }
+    }
+
+    return () => {
+      if (observer) observer.disconnect();
+      if (idleHandle && 'cancelIdleCallback' in window) window.cancelIdleCallback(idleHandle);
+      if (timer) clearTimeout(timer);
+    };
+  }, [lazy]);
+
   const scriptSrc =
     invokeUrl ||
     `https://www.highperformanceformat.com/${adKey}/invoke.js`;
@@ -40,21 +87,25 @@ export default function AdsterraAd({
   const srcDoc = `<!doctype html><html><head></head><body style="margin:0;padding:0"><script>window.atOptions={key:'${adKey}',format:'${format}',height:${height},width:${width},params:{}};</script><script src="${scriptSrc}"></script></body></html>`;
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div ref={containerRef} className="flex flex-col items-center justify-center">
       {showLabel && (
         <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 tracking-widest uppercase mb-2 select-none">
           Publicidad
         </span>
       )}
       <div className="max-w-full overflow-hidden" style={{ width, height }}>
-        <iframe
-          srcDoc={srcDoc}
-          style={{ width, height, border: 0, display: 'block' }}
-          scrolling="no"
-          frameBorder="0"
-          loading="lazy"
-          title="Publicidad"
-        />
+        {shouldRender ? (
+          <iframe
+            srcDoc={srcDoc}
+            style={{ width, height, border: 0, display: 'block' }}
+            scrolling="no"
+            frameBorder="0"
+            loading="lazy"
+            title="Publicidad"
+          />
+        ) : (
+          <div style={{ width, height }} className="bg-transparent" />
+        )}
       </div>
     </div>
   );

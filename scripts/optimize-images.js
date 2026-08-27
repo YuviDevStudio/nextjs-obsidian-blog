@@ -23,9 +23,9 @@ const sharp = require('sharp');
 
 const imagesDir = path.join(process.cwd(), 'posts', 'images');
 const MAX_EDGE = 1600;
-const WEBP_QUALITY = 82;
+const WEBP_QUALITY = 78;
 // Widths offered in the srcSet. Ordered ascending.
-const WIDTHS = [640, 960, 1280];
+const WIDTHS = [480, 640, 960, 1280];
 
 const SOURCE_EXT = /\.(jpe?g|png|gif)$/i;
 // A base WebP (not already a width variant like foo@640.webp) can also act as
@@ -57,7 +57,7 @@ async function optimizeFile(file) {
     await sharp(src, { failOn: 'none' })
       .rotate() // honor EXIF orientation
       .resize(width, width, { fit: 'inside', withoutEnlargement: true })
-      .webp({ quality: WEBP_QUALITY, effort: 4 })
+      .webp({ quality: WEBP_QUALITY, effort: 6 })
       .toFile(path.join(imagesDir, outName));
   };
 

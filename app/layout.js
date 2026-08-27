@@ -1,6 +1,4 @@
 import '../styles/global.css';
-import 'prismjs/themes/prism.css';
-import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 import Navbar from './components/navbar';
 import SubNavbar from './components/sub-navbar';
 import Footer from './components/footer';
@@ -57,12 +55,6 @@ export default function RootLayout({ children }) {
       className={`${inter.variable} ${outfit.variable}`}
     >
       <body>
-        {/* Warm up connections to third-party ad/analytics hosts so their
-            scripts start fetching sooner without blocking the main thread. */}
-        <link rel="preconnect" href="https://pl30757504.effectivecpmnetwork.com" />
-        <link rel="preconnect" href="https://indefinitelynutmegbile.com" />
-        <link rel="preconnect" href="https://www.highperformanceformat.com" />
-        <link rel="preconnect" href="https://static.cloudflareinsights.com" />
         {/* Inline before interactive UI so dark class is set before first paint when possible */}
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <ThemeProvider>
@@ -73,8 +65,8 @@ export default function RootLayout({ children }) {
           </main>
           <Footer />
         </ThemeProvider>
+        <GoogleAnalytics gaId="G-9K841MNERH" />
       </body>
-      <GoogleAnalytics gaId="G-9K841MNERH" />
     </html>
   );
 }
