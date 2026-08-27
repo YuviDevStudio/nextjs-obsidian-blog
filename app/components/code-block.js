@@ -1,5 +1,7 @@
 'use client'
 
+import 'prismjs/themes/prism.css';
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 import { useEffect, useRef } from 'react'
 import { useTheme } from './theme-provider'
 

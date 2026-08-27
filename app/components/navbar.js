@@ -7,20 +7,28 @@ import { useState, useEffect, useRef } from 'react';
 
 export default function Navbar({ searchPosts = [] }) {
   const [navbarVisible, setNavbarVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const lastScrollYRef = useRef(0);
+  const tickingRef = useRef(false);
   const searchRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
+      if (!tickingRef.current) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          const prevScrollY = lastScrollYRef.current;
 
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setNavbarVisible(false);
-      } else if (currentScrollY < lastScrollY) {
-        setNavbarVisible(true);
+          if (currentScrollY > prevScrollY && currentScrollY > 100) {
+            setNavbarVisible(false);
+          } else if (currentScrollY < prevScrollY) {
+            setNavbarVisible(true);
+          }
+          lastScrollYRef.current = currentScrollY;
+          tickingRef.current = false;
+        });
+        tickingRef.current = true;
       }
-      setLastScrollY(currentScrollY);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -28,7 +36,7 @@ export default function Navbar({ searchPosts = [] }) {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [lastScrollY]);
+  }, []);
 
   const menuRef = useRef(null);
 

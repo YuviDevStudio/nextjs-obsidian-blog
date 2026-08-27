@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 /**
  * Adsterra Native Banner for the post sidebar.
@@ -17,9 +17,51 @@ const KEY = 'ea8ee4a51f55f54788c6620e8c4119a6';
 const INVOKE_URL = `https://indefinitelynutmegbile.com/${KEY}/invoke.js`;
 
 export default function AdsterraNativeSidebar() {
+  const [shouldRender, setShouldRender] = useState(false);
+  const containerRef = useRef(null);
   const iframeRef = useRef(null);
 
   useEffect(() => {
+    let observer;
+    let idleHandle;
+    let timer;
+
+    const loadAd = () => {
+      setShouldRender(true);
+    };
+
+    if (typeof IntersectionObserver !== 'undefined' && containerRef.current) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0]?.isIntersecting) {
+            if ('requestIdleCallback' in window) {
+              idleHandle = window.requestIdleCallback(loadAd, { timeout: 3000 });
+            } else {
+              timer = setTimeout(loadAd, 1000);
+            }
+            observer.disconnect();
+          }
+        },
+        { rootMargin: '200px' }
+      );
+      observer.observe(containerRef.current);
+    } else {
+      if ('requestIdleCallback' in window) {
+        idleHandle = window.requestIdleCallback(loadAd, { timeout: 3000 });
+      } else {
+        timer = setTimeout(loadAd, 1500);
+      }
+    }
+
+    return () => {
+      if (observer) observer.disconnect();
+      if (idleHandle && 'cancelIdleCallback' in window) window.cancelIdleCallback(idleHandle);
+      if (timer) clearTimeout(timer);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!shouldRender) return;
     const frame = iframeRef.current;
     if (!frame) return;
 
@@ -38,32 +80,34 @@ export default function AdsterraNativeSidebar() {
     };
 
     frame.addEventListener('load', fit);
-    const poll = setInterval(fit, 500);
-    const stop = setTimeout(() => clearInterval(poll), 15000);
+    const timeoutId = setTimeout(fit, 1500);
 
     return () => {
-      clearInterval(poll);
-      clearTimeout(stop);
+      clearTimeout(timeoutId);
       frame.removeEventListener('load', fit);
     };
-  }, []);
+  }, [shouldRender]);
 
   const srcDoc = `<!doctype html><html><head></head><body style="margin:0;padding:0"><div id="container-${KEY}"></div><script async src="${INVOKE_URL}"><\/script></body></html>`;
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div ref={containerRef} className="flex flex-col items-center justify-center">
       <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 tracking-widest uppercase mb-2 select-none">
         Publicidad
       </span>
-      <iframe
-        ref={iframeRef}
-        srcDoc={srcDoc}
-        style={{ width: 300, height: 250, border: 0, display: 'block' }}
-        scrolling="no"
-        frameBorder="0"
-        loading="lazy"
-        title="Publicidad"
-      />
+      {shouldRender ? (
+        <iframe
+          ref={iframeRef}
+          srcDoc={srcDoc}
+          style={{ width: 300, height: 250, border: 0, display: 'block' }}
+          scrolling="no"
+          frameBorder="0"
+          loading="lazy"
+          title="Publicidad"
+        />
+      ) : (
+        <div style={{ width: 300, height: 250 }} className="bg-transparent" />
+      )}
     </div>
   );
 }

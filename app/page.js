@@ -105,13 +105,6 @@ export default function Page() {
           {/* Ad Space: Adsterra 300x250 */}
           <div className="w-full min-h-[250px] flex flex-col items-center justify-center">
             <AdSterra300x250 variant="home" />
-            <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 tracking-widest uppercase mb-2 select-none">
-              Publicidad
-            </span>
-            <div
-              id="adsterra-300x250-home"
-              className="w-[300px] h-[250px] max-w-full overflow-hidden"
-            />
           </div>
         </aside>
       </div>

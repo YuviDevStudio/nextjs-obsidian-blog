@@ -25,8 +25,10 @@ export default function AdSterra300x250({ variant = 'home' }) {
     const container = containerRef.current;
     if (!container || container.querySelector('iframe')) return; // idempotent
 
-    // Defer to idle time so the ad script doesn't compete with the initial
-    // render/hydration for the main thread (keeps Total Blocking Time low).
+    let cleanup;
+    let handle;
+    let observer;
+
     const run = () => {
       if (container.querySelector('iframe')) return;
       // 1) Set the global options that invoke.js will read.
@@ -52,14 +54,30 @@ export default function AdSterra300x250({ variant = 'home' }) {
       };
     };
 
-    let cleanup;
-    let handle;
-    const ric = window.requestIdleCallback || ((cb) => setTimeout(cb, 1500));
-    handle = ric(run);
+    const triggerLoad = () => {
+      const ric = window.requestIdleCallback || ((cb) => setTimeout(cb, 1500));
+      handle = ric(run, { timeout: 2500 });
+    };
+
+    if (typeof IntersectionObserver !== 'undefined') {
+      observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0]?.isIntersecting) {
+            triggerLoad();
+            observer.disconnect();
+          }
+        },
+        { rootMargin: '300px' }
+      );
+      observer.observe(container);
+    } else {
+      triggerLoad();
+    }
 
     return () => {
+      if (observer) observer.disconnect();
       if (handle && window.cancelIdleCallback) window.cancelIdleCallback(handle);
-      else clearTimeout(handle);
+      else if (handle) clearTimeout(handle);
       if (cleanup) cleanup();
     };
   }, [variant]);
