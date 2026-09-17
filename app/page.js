@@ -3,7 +3,6 @@ import FeaturedPosts from './components/featuredPosts';
 import PostsList from './components/postsList';
 import SearchBox from './components/search-box';
 import Link from 'next/link';
-import Script from 'next/script';
 import AdSterra300x250 from './components/adSterra300x250';
 import AdsterraAd from './components/adsterra';
 import AdsterraNative from './components/adsterraNative';
@@ -109,15 +108,10 @@ export default function Page() {
         </aside>
       </div>
 
-      {/* Adsterra popunder and social banner scripts
-      <Script
-        src="https://indefinitelynutmegbile.com/43/e5/3b/43e53bdd9b809f2c4f8d75b9182cd75e.js"
-        strategy="afterInteractive"
-      />
-      <Script
-        src="https://pl30757502.effectivecpmnetwork.com/94/ff/05/94ff05bbc2e8b841806c99819695b650.js"
-        strategy="afterInteractive"
-      /> */}
+      {/* NOTE: Adsterra popunder / social-bar scripts were removed here.
+          They force automatic redirects / popunders without clicks and made
+          the site unusable. Do not re-add them. Banner + native placements
+          above run sandboxed instead. */}
 
       {/* Native Banner (4:1) */}
       <AdsterraNative />

@@ -9,11 +9,10 @@ import RelatedPosts from '../../components/relatedPosts';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import ResponsiveImage from '../../components/responsive-image';
-import Script from 'next/script';
 import AdSterra300x250 from '../../components/adSterra300x250';
-import AdsterraAd from '../../components/adsterra';
 import AdsterraNative from '../../components/adsterraNative';
 import AdsterraNativeSidebar from '../../components/adsterraNativeSidebar';
+import SkyscraperRail from '../../components/skyscraperRail';
 // Force static generation for post pages and provide static params at build time
 export const dynamic = 'force-static';
 
@@ -26,6 +25,11 @@ export async function generateMetadata({ params }) {
   return {
     title: postData.title || 'JotaEDRA',
     description: postData.description || undefined,
+    // Public short URL (/:slug) is the canonical one. /posts/:slug serves
+    // the same content via internal rewrite, so point Google at one URL.
+    alternates: {
+      canonical: `/${resolvedParams.id}`,
+    },
   };
 }
 
@@ -43,16 +47,13 @@ export default async function Post({ params }) {
 
   return (
     <div className="w-full flex flex-col xl:flex-row gap-8 justify-center items-start py-6">
-      {/* Left Sidebar: Skyscraper Ad (hidden on small viewports) */}
-      <aside className="hidden xl:flex flex-col w-[160px] sticky top-24 shrink-0 select-none">
-        <AdsterraAd
-          variant="posts-160x600"
-          adKey="fa7e455ec598064d870403def8d5d90f"
-          invokeUrl="https://www.highperformanceformat.com/fa7e455ec598064d870403def8d5d90f/invoke.js"
-          width={160}
-          height={600}
-        />
-      </aside>
+      {/* Left Sidebar: Skyscraper Ad (hidden on small viewports, collapses when no fill) */}
+      <SkyscraperRail
+        adKey="fa7e455ec598064d870403def8d5d90f"
+        invokeUrl="https://www.highperformanceformat.com/fa7e455ec598064d870403def8d5d90f/invoke.js"
+        width={160}
+        height={600}
+      />
 
       {/* Center Column: Main readable article content */}
       <article className="w-full max-w-[720px] flex-grow px-2 md:px-0">
@@ -139,10 +140,8 @@ export default async function Post({ params }) {
         {/* Banner Ad 2: Native Banner (4:1) */}
         <AdsterraNativeSidebar />
       </aside>
-      {/* <Script
-        src="https://pl30757502.effectivecpmnetwork.com/94/ff/05/94ff05bbc2e8b841806c99819695b650.js"
-        strategy="afterInteractive"
-      /> */}
+      {/* NOTE: Adsterra popunder / social-bar script was removed here.
+          It forced automatic redirects without clicks. Do not re-add. */}
     </div>
   );
 }
