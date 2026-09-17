@@ -63,8 +63,9 @@ export default function RootLayout({ children }) {
       className={`${inter.variable} ${outfit.variable}`}
     >
       <head>
-        {/* AdSense verification + auto-ads: plain tag (not next/script) so the
-            exact snippet ships verbatim in SSR HTML for Google's crawler. */}
+        {/* AdSense verification + auto-ads: plain tags (not next/script) so the
+            exact snippets ship verbatim in SSR HTML for Google's crawler. */}
+        <meta name="google-adsense-account" content="ca-pub-9956672685720320" />
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9956672685720320"
