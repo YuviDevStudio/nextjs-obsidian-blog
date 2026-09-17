@@ -39,10 +39,13 @@ const nextConfig = {
   },
   async rewrites() {
     return [
-      // Only rewrite single-segment root slugs (e.g. /my-post -> /posts/my-post)
-      // This prevents double-rewriting paths that already start with /posts or special Next.js paths.
+      // Only rewrite single-segment root slugs (e.g. /my-post -> /posts/my-post).
+      // [^/.]+ excludes any path containing a dot, so system files like
+      // /sitemap.xml, /robots.txt, /favicon.png can never be rewritten to
+      // /posts/* (which would 404 with a noindex and confuse Search Console).
+      // Reserved first segments are also excluded to avoid /posts -> /posts/posts.
       {
-        source: '/:slug',
+        source: '/:slug((?!posts$|tags$|api$|_next$)[^/.]+)',
         has: [],
         destination: '/posts/:slug',
       },

@@ -1,86 +1,67 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 /**
- * Adsterra 300x250 inline ad (iframe format).
+ * Adsterra 300x250 inline ad (sandboxed iframe format).
  *
- * Adsterra's `invoke.js` reads a global `atOptions` object and then injects
- * an iframe replacement inline where the script is appended to the DOM.
+ * The ad runs isolated inside its own `srcdoc` iframe with a restrictive
+ * `sandbox` (no `allow-top-navigation`). Third-party banner creatives can
+ * otherwise call `window.top.location` and hijack the whole page with an
+ * automatic redirect / popunder without any click — which is what was
+ * happening on the site.
  *
- * WHY NOT next/script: next/script hoists `<script>` tags into <head>/<body>
- * far from the intended insertion point, and `dangerouslySetInnerHTML` does
- * NOT execute <script> tags. Ad networks like Adsterra rely on the script
- * running exactly where you place it. So we append real <script> elements
- * imperatively via useEffect so the ad iframe renders inside this container.
- *
- * Each placement passes a unique `variant` (e.g. "home", "posts") so the
- * global `atOptions` set before each invoke.js load doesn't collide when the
- * homepage and an article page are both mounted in one session.
+ * Each placement passes a unique `variant` (e.g. "home", "posts") so React
+ * remounts correctly when navigating between page types.
  */
-export default function AdSterra300x250({ variant = 'home' }) {
+const AD_KEY = '42723bf5162f297557501cd8d7ccc692';
+const INVOKE_URL = `https://indefinitelynutmegbile.com/${AD_KEY}/invoke.js`;
+
+export default function AdSterra300x250({ variant = 'home', lazy = true }) {
+  const [shouldRender, setShouldRender] = useState(!lazy);
   const containerRef = useRef(null);
 
   useEffect(() => {
+    if (!lazy) return;
     const container = containerRef.current;
-    if (!container || container.querySelector('iframe')) return; // idempotent
+    if (!container) return;
 
-    let cleanup;
-    let handle;
     let observer;
+    let idleHandle;
+    let timer;
 
-    const run = () => {
-      if (container.querySelector('iframe')) return;
-      // 1) Set the global options that invoke.js will read.
-      window.atOptions = {
-        key: '42723bf5162f297557501cd8d7ccc692',
-        format: 'iframe',
-        height: 250,
-        width: 300,
-        params: {},
-      };
-
-      // 2) Append the loader script at this exact container location.
-      const s = document.createElement('script');
-      s.async = true;
-      s.src =
-        'https://indefinitelynutmegbile.com/42723bf5162f297557501cd8d7ccc692/invoke.js';
-      container.appendChild(s);
-      cleanup = () => {
-        s.remove();
-        if (container.querySelector('iframe')) {
-          container.querySelector('iframe').remove();
-        }
-      };
-    };
-
-    const triggerLoad = () => {
-      const ric = window.requestIdleCallback || ((cb) => setTimeout(cb, 1500));
-      handle = ric(run, { timeout: 2500 });
-    };
+    const loadAd = () => setShouldRender(true);
 
     if (typeof IntersectionObserver !== 'undefined') {
       observer = new IntersectionObserver(
         (entries) => {
           if (entries[0]?.isIntersecting) {
-            triggerLoad();
+            if ('requestIdleCallback' in window) {
+              idleHandle = window.requestIdleCallback(loadAd, { timeout: 2500 });
+            } else {
+              timer = setTimeout(loadAd, 800);
+            }
             observer.disconnect();
           }
         },
         { rootMargin: '300px' }
       );
       observer.observe(container);
+    } else if ('requestIdleCallback' in window) {
+      idleHandle = window.requestIdleCallback(loadAd, { timeout: 2500 });
     } else {
-      triggerLoad();
+      timer = setTimeout(loadAd, 1200);
     }
 
     return () => {
       if (observer) observer.disconnect();
-      if (handle && window.cancelIdleCallback) window.cancelIdleCallback(handle);
-      else if (handle) clearTimeout(handle);
-      if (cleanup) cleanup();
+      if (idleHandle && 'cancelIdleCallback' in window)
+        window.cancelIdleCallback(idleHandle);
+      if (timer) clearTimeout(timer);
     };
-  }, [variant]);
+  }, [lazy, variant]);
+
+  const srcDoc = `<!doctype html><html><head></head><body style="margin:0;padding:0"><script>window.atOptions={key:'${AD_KEY}',format:'iframe',height:250,width:300,params:{}};</script><script src="${INVOKE_URL}"></script></body></html>`;
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -90,7 +71,26 @@ export default function AdSterra300x250({ variant = 'home' }) {
       <div
         ref={containerRef}
         className="w-[300px] h-[250px] max-w-full overflow-hidden"
-      />
+      >
+        {shouldRender ? (
+          <iframe
+            key={variant}
+            srcDoc={srcDoc}
+            // Block top-page navigation hijack; legit clicks still open new tab.
+            // allow-same-origin is required: without it Adsterra's invoke.js
+            // throws on document.cookie and the slot stays blank/unclickable.
+            sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+            referrerPolicy="strict-origin-when-cross-origin"
+            style={{ width: 300, height: 250, border: 0, display: 'block' }}
+            scrolling="no"
+            frameBorder="0"
+            loading="lazy"
+            title="Publicidad"
+          />
+        ) : (
+          <div style={{ width: 300, height: 250 }} className="bg-transparent" />
+        )}
+      </div>
     </div>
   );
 }

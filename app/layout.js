@@ -20,6 +20,7 @@ const outfit = Outfit({
 });
 
 export const metadata = {
+  metadataBase: new URL('https://jotaedra.com'),
   title: {
     default: 'JotaEDRA',
     template: '%s | JotaEDRA',
@@ -28,6 +29,13 @@ export const metadata = {
     'Aquí se habla de IA, tecnología, salud, noticias, entretenimiento y más...',
   icons: {
     icon: '/favicon.png',
+  },
+  alternates: {
+    canonical: '/',
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

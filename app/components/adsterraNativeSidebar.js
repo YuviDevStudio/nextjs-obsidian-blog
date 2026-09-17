@@ -16,7 +16,7 @@ import { useState, useEffect, useRef } from 'react';
 const KEY = 'ea8ee4a51f55f54788c6620e8c4119a6';
 const INVOKE_URL = `https://indefinitelynutmegbile.com/${KEY}/invoke.js`;
 
-export default function AdsterraNativeSidebar() {
+export default function AdsterraNativeSidebar({ width = 300 }) {
   const [shouldRender, setShouldRender] = useState(false);
   const containerRef = useRef(null);
   const iframeRef = useRef(null);
@@ -62,33 +62,89 @@ export default function AdsterraNativeSidebar() {
 
   useEffect(() => {
     if (!shouldRender) return;
-    const frame = iframeRef.current;
-    if (!frame) return;
+
+    let disposed = false;
+    const timers = [];
+    let mutationObserver;
+    let resizeObserver;
+    let intervalId;
+    const getFrame = () => iframeRef.current;
 
     const fit = () => {
+      if (disposed) return;
       try {
+        const frame = getFrame();
+        if (!frame) return;
         const doc = frame.contentDocument;
         const body = doc && doc.body;
-        if (!body) return;
-        const h = body.scrollHeight;
-        if (h > 0 && h !== parseInt(frame.style.height, 10)) {
-          frame.style.height = `${h}px`;
+        const el = doc && doc.documentElement;
+        if (!body || !el) return;
+        const h = Math.max(
+          body.scrollHeight || 0,
+          el.scrollHeight || 0,
+          body.offsetHeight || 0,
+          el.offsetHeight || 0
+        );
+        if (h > 50 && h <= 3000) {
+          const current = parseInt(frame.style.height, 10);
+          if (current !== h) frame.style.height = `${h}px`;
         }
       } catch (e) {
         /* cross-origin read not possible; ignore */
       }
     };
 
-    frame.addEventListener('load', fit);
-    const timeoutId = setTimeout(fit, 1500);
+    const frame = getFrame();
+    const onLoad = () => fit();
+    if (frame) frame.addEventListener('load', onLoad);
+    timers.push(setTimeout(fit, 500));
+    timers.push(setTimeout(fit, 1500));
+    timers.push(setTimeout(fit, 3000));
+    timers.push(setTimeout(fit, 5000));
+    intervalId = setInterval(fit, 1000);
+    timers.push(setTimeout(() => clearInterval(intervalId), 12000));
+
+    const attachObservers = () => {
+      try {
+        const frame = getFrame();
+        const doc = frame && frame.contentDocument;
+        if (!doc || !doc.body) {
+          timers.push(setTimeout(attachObservers, 500));
+          return;
+        }
+        if (typeof MutationObserver !== 'undefined') {
+          mutationObserver = new MutationObserver(fit);
+          mutationObserver.observe(doc.body, {
+            childList: true,
+            subtree: true,
+            attributes: true,
+          });
+        }
+        if (typeof ResizeObserver !== 'undefined') {
+          resizeObserver = new ResizeObserver(fit);
+          resizeObserver.observe(doc.body);
+        }
+      } catch (e) {
+        /* retry on next tick */
+      }
+    };
+    attachObservers();
+
+    const onResize = () => fit();
+    window.addEventListener('resize', onResize);
 
     return () => {
-      clearTimeout(timeoutId);
-      frame.removeEventListener('load', fit);
+      disposed = true;
+      timers.forEach(clearTimeout);
+      clearInterval(intervalId);
+      if (frame) frame.removeEventListener('load', onLoad);
+      window.removeEventListener('resize', onResize);
+      if (mutationObserver) mutationObserver.disconnect();
+      if (resizeObserver) resizeObserver.disconnect();
     };
   }, [shouldRender]);
 
-  const srcDoc = `<!doctype html><html><head></head><body style="margin:0;padding:0"><div id="container-${KEY}"></div><script async src="${INVOKE_URL}"><\/script></body></html>`;
+  const srcDoc = `<!doctype html><html><head><style>html,body{margin:0;padding:0;overflow:hidden;background:transparent}</style></head><body><div id="container-${KEY}"></div><script async src="${INVOKE_URL}"><\/script></body></html>`;
 
   return (
     <div ref={containerRef} className="flex flex-col items-center justify-center">
@@ -99,14 +155,20 @@ export default function AdsterraNativeSidebar() {
         <iframe
           ref={iframeRef}
           srcDoc={srcDoc}
-          style={{ width: 300, height: 250, border: 0, display: 'block' }}
+          // Block top-page navigation hijack; legit clicks still open new tab.
+          // allow-same-origin is required: without it invoke.js throws on
+          // document.cookie and the slot stays blank, and the parent can't
+          // auto-size the frame (contentDocument is null cross-origin).
+          sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+          referrerPolicy="strict-origin-when-cross-origin"
+          style={{ width, height: 250, border: 0, display: 'block' }}
           scrolling="no"
           frameBorder="0"
           loading="lazy"
           title="Publicidad"
         />
       ) : (
-        <div style={{ width: 300, height: 250 }} className="bg-transparent" />
+        <div style={{ width, height: 250 }} className="bg-transparent" />
       )}
     </div>
   );

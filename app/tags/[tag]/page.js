@@ -17,6 +17,9 @@ export async function generateMetadata({ params }) {
     : 'Tema';
   return {
     title: `Artículos sobre #${capitalizedTag}`,
+    alternates: {
+      canonical: `/tags/${encodeURIComponent(tag)}`,
+    },
   };
 }
 
