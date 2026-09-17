@@ -5,7 +5,6 @@ import Footer from './components/footer';
 import { ThemeProvider } from './components/theme-provider';
 import { getAllTags, getSearchIndex } from '../lib/posts';
 import { Inter, Outfit } from 'next/font/google';
-import Script from 'next/script';
 import { GoogleAnalytics } from '@next/third-parties/google';
 
 const inter = Inter({
@@ -63,6 +62,15 @@ export default function RootLayout({ children }) {
       data-scroll-behavior="smooth"
       className={`${inter.variable} ${outfit.variable}`}
     >
+      <head>
+        {/* AdSense verification + auto-ads: plain tag (not next/script) so the
+            exact snippet ships verbatim in SSR HTML for Google's crawler. */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9956672685720320"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body>
         {/* Inline before interactive UI so dark class is set before first paint when possible */}
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
@@ -74,12 +82,6 @@ export default function RootLayout({ children }) {
           </main>
           <Footer />
         </ThemeProvider>
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9956672685720320"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
         <GoogleAnalytics gaId="G-9K841MNERH" />
       </body>
     </html>
