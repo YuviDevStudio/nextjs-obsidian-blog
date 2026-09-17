@@ -5,6 +5,7 @@ import Footer from './components/footer';
 import { ThemeProvider } from './components/theme-provider';
 import { getAllTags, getSearchIndex } from '../lib/posts';
 import { Inter, Outfit } from 'next/font/google';
+import Script from 'next/script';
 import { GoogleAnalytics } from '@next/third-parties/google';
 
 const inter = Inter({
@@ -73,6 +74,12 @@ export default function RootLayout({ children }) {
           </main>
           <Footer />
         </ThemeProvider>
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9956672685720320"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
         <GoogleAnalytics gaId="G-9K841MNERH" />
       </body>
     </html>
