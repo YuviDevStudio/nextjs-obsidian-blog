@@ -113,7 +113,30 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-end gap-2 text-xs text-slate-400 dark:text-slate-500">
+        <nav
+          aria-label="Legal"
+          className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-[13px] font-semibold text-slate-500 dark:text-slate-400"
+        >
+          <span className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+            Legal
+          </span>
+          <Link
+            href="/politica-de-privacidad"
+            className="hover:underline underline-offset-4"
+          >
+            Política de Privacidad
+          </Link>
+        </nav>
+
+        <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400 dark:text-slate-500">
+          <div className="flex items-center gap-4">
+            <Link
+              href="/politica-de-privacidad"
+              className="hover:text-indigo-600 dark:hover:text-sky-400 hover:underline underline-offset-2 transition-colors font-medium"
+            >
+              Política de Privacidad
+            </Link>
+          </div>
           <p>
             © {year} <span>J</span>
             <i>ota</i>
