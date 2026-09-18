@@ -15,6 +15,12 @@ export default function sitemap() {
       changeFrequency: 'daily',
       priority: 1,
     },
+    {
+      url: `${SITE_URL}/politica-de-privacidad`,
+      lastModified: new Date('2026-09-18'),
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
     // Public short URLs (/:slug) are canonical. Do NOT list /posts/:slug
     // to avoid duplicate-content confusion in Search Console.
     ...posts.map((post) => ({
