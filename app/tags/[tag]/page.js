@@ -78,10 +78,6 @@ export default async function TagPage({ params }) {
             </div>
           </div>
 
-          <div className="w-full h-[250px] border border-dashed border-slate-300 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/10 rounded-2xl flex flex-col items-center justify-center text-center p-4 select-none">
-            <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 tracking-widest uppercase mb-1">Publicidad</span>
-            <span className="text-xs text-slate-400 dark:text-slate-500">Espacio reservado (300x250)</span>
-          </div>
         </aside>
       </div>
     </div>

@@ -3,9 +3,6 @@ import FeaturedPosts from './components/featuredPosts';
 import PostsList from './components/postsList';
 import SearchBox from './components/search-box';
 import Link from 'next/link';
-import AdSterra300x250 from './components/adSterra300x250';
-import AdsterraAd from './components/adsterra';
-import AdsterraNative from './components/adsterraNative';
 export default function Page() {
   const allPostsData = getSortedPostsData();
   const allTags = getAllTags();
@@ -13,37 +10,6 @@ export default function Page() {
 
   return (
     <div className="w-full">
-      {/* Horizontal banner over Destacados (responsive sizes) */}
-      <div className="flex justify-center mb-8">
-        {/* Mobile: 320x50 */}
-        <div className="md:hidden">
-          <AdsterraAd
-            adKey="600a62f273419ce5b266e40e08a81c33"
-            invokeUrl="https://www.highperformanceformat.com/600a62f273419ce5b266e40e08a81c33/invoke.js"
-            width={320}
-            height={50}
-          />
-        </div>
-        {/* Tablet: 468x60 */}
-        <div className="hidden md:block lg:hidden">
-          <AdsterraAd
-            adKey="35b84f46d8daeef74382c1fa88fd3925"
-            invokeUrl="https://www.highperformanceformat.com/35b84f46d8daeef74382c1fa88fd3925/invoke.js"
-            width={468}
-            height={60}
-          />
-        </div>
-        {/* Desktop: 728x90 */}
-        <div className="hidden lg:block">
-          <AdsterraAd
-            adKey="d582b729d318dfc560127c66866bc171"
-            invokeUrl="https://www.highperformanceformat.com/d582b729d318dfc560127c66866bc171/invoke.js"
-            width={728}
-            height={90}
-          />
-        </div>
-      </div>
-
       {/* Featured Section */}
       <section className="mb-10">
         <div className="flex items-center justify-between mb-4 px-2">
@@ -58,15 +24,6 @@ export default function Page() {
       <div className="flex flex-col lg:flex-row gap-8 items-start my-8 w-full">
         {/* Left Column: Posts List */}
         <div className="w-full lg:flex-grow lg:max-w-[780px]">
-          {/* Horizontal banner over Lo Último (desktop only) */}
-          <div className="hidden lg:flex justify-center mb-6">
-            <AdsterraAd
-              adKey="35b84f46d8daeef74382c1fa88fd3925"
-              invokeUrl="https://www.highperformanceformat.com/35b84f46d8daeef74382c1fa88fd3925/invoke.js"
-              width={468}
-              height={60}
-            />
-          </div>
           <PostsList posts={allPostsData} title="Lo Último" />
         </div>
 
@@ -100,21 +57,8 @@ export default function Page() {
               })}
             </div>
           </div>
-
-          {/* Ad Space: Adsterra 300x250 */}
-          <div className="w-full min-h-[250px] flex flex-col items-center justify-center">
-            <AdSterra300x250 variant="home" />
-          </div>
         </aside>
       </div>
-
-      {/* NOTE: Adsterra popunder / social-bar scripts were removed here.
-          They force automatic redirects / popunders without clicks and made
-          the site unusable. Do not re-add them. Banner + native placements
-          above run sandboxed instead. */}
-
-      {/* Native Banner (4:1) */}
-      <AdsterraNative />
     </div>
   );
 }

@@ -9,10 +9,6 @@ import RelatedPosts from '../../components/relatedPosts';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import ResponsiveImage from '../../components/responsive-image';
-import AdSterra300x250 from '../../components/adSterra300x250';
-import AdsterraNative from '../../components/adsterraNative';
-import AdsterraNativeSidebar from '../../components/adsterraNativeSidebar';
-import SkyscraperRail from '../../components/skyscraperRail';
 // Force static generation for post pages and provide static params at build time
 export const dynamic = 'force-static';
 
@@ -46,15 +42,7 @@ export default async function Post({ params }) {
   }
 
   return (
-    <div className="w-full flex flex-col xl:flex-row gap-8 justify-center items-start py-6">
-      {/* Left Sidebar: Skyscraper Ad (hidden on small viewports, collapses when no fill) */}
-      <SkyscraperRail
-        adKey="fa7e455ec598064d870403def8d5d90f"
-        invokeUrl="https://www.highperformanceformat.com/fa7e455ec598064d870403def8d5d90f/invoke.js"
-        width={160}
-        height={600}
-      />
-
+    <div className="w-full flex justify-center items-start py-6">
       {/* Center Column: Main readable article content */}
       <article className="w-full max-w-[720px] flex-grow px-2 md:px-0">
         {/* Navigation back */}
@@ -126,22 +114,9 @@ export default async function Post({ params }) {
           <MarkdownRenderer content={postData.content} />
         </div>
 
-        {/* Native Banner (4:1) */}
-        <AdsterraNative />
-
         {/* Related posts */}
         <RelatedPosts posts={getRelatedPosts(postData.id)} />
       </article>
-
-      {/* Right Sidebar: Large Ad blocks (hidden on smaller screens) */}
-      <aside className="hidden lg:flex flex-col w-[300px] sticky top-24 shrink-0 gap-6 select-none">
-        {/* Banner Ad 1 */}
-        <AdSterra300x250 variant="posts" />
-        {/* Banner Ad 2: Native Banner (4:1) */}
-        <AdsterraNativeSidebar />
-      </aside>
-      {/* NOTE: Adsterra popunder / social-bar script was removed here.
-          It forced automatic redirects without clicks. Do not re-add. */}
     </div>
   );
 }
