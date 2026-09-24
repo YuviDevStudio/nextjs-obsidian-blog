@@ -2,6 +2,18 @@
 
 import Link from "next/link"
 
+// Client-safe copy of lib/posts slugify (lib/posts imports fs/gray-matter,
+// which can't be bundled into a client component).
+function tagSlug(tag) {
+  return String(tag || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
 const SubNavbar = ({ tags = [] }) => {
   if (!tags.length) return null;
 
@@ -14,7 +26,7 @@ const SubNavbar = ({ tags = [] }) => {
             return (
               <li key={tag}>
                 <Link
-                  href={`/tags/${encodeURIComponent(tag)}`}
+                  href={`/tags/${tagSlug(tag)}`}
                   className={`inline-block px-3 py-1 rounded-full text-xs font-semibold border transition-all duration-200 !no-underline bg-slate-50 border-slate-300 text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 hover:border-indigo-300 dark:bg-slate-800/40 dark:border-slate-800 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-sky-400 dark:hover:border-sky-500/30`}
                 >
                   #{capitalizedTag}

@@ -2,6 +2,7 @@ import {
   getPostData,
   getAllPostIds,
   getRelatedPosts,
+  getTagSlug,
 } from '../../../lib/posts';
 import Date from '../../components/date';
 import MarkdownRenderer from '../../components/markdown-renderer';
@@ -76,7 +77,7 @@ export default async function Post({ params }) {
                 return (
                   <Link
                     key={idx}
-                    href={`/tags/${encodeURIComponent(tag)}`}
+                    href={`/tags/${getTagSlug(tag)}`}
                     className="px-2 py-0.5 text-xs font-semibold rounded bg-indigo-50/60 text-indigo-600 dark:bg-sky-500/10 dark:text-sky-400 hover:opacity-90 transition-opacity !no-underline"
                   >
                     #{cap}

@@ -1,4 +1,4 @@
-import { getSortedPostsData, getAllTags, getSearchIndex } from '../lib/posts';
+import { getSortedPostsData, getAllTags, getSearchIndex, getTagSlug } from '../lib/posts';
 import FeaturedPosts from './components/featuredPosts';
 import PostsList from './components/postsList';
 import SearchBox from './components/search-box';
@@ -48,7 +48,7 @@ export default function Page() {
                 return (
                   <Link
                     key={tag}
-                    href={`/tags/${encodeURIComponent(tag)}`}
+                    href={`/tags/${getTagSlug(tag)}`}
                     className="px-2.5 py-1 text-xs rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-sky-400 hover:border-indigo-300 dark:hover:border-sky-500/30 hover:bg-indigo-50 dark:hover:bg-slate-800 transition-all font-medium"
                   >
                     #{capitalized}

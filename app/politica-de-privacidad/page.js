@@ -416,36 +416,6 @@ export default function PoliticaDePrivacidadPage() {
                 Escríbenos a admin@jotaedra.com
               </a>
             </div>
-
-            {/* Footer meta */}
-            <footer className="pt-2 border-t border-slate-100 dark:border-slate-800">
-              <dl className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 text-sm text-slate-500 dark:text-slate-400">
-                <div className="flex gap-2">
-                  <dt className="font-semibold text-slate-700 dark:text-slate-200">Última actualización:</dt>
-                  <dd>
-                    <time dateTime="2026-09-18">{LAST_UPDATED}</time>
-                  </dd>
-                </div>
-                <div className="flex gap-2">
-                  <dt className="font-semibold text-slate-700 dark:text-slate-200">Responsable:</dt>
-                  <dd>Yuvi Dev Studio</dd>
-                </div>
-              </dl>
-              <p className="mt-4 text-xs leading-relaxed text-slate-400 dark:text-slate-500">
-                Este texto es una plantilla orientativa y no constituye asesoramiento jurídico;
-                adáptala siempre a tu tratamiento real de datos. Documento elaborado con ayuda del
-                generador gratuito de{' '}
-                <a
-                  href="https://politicadeprivacidadplantilla.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline underline-offset-2 hover:text-indigo-500 dark:hover:text-sky-400"
-                >
-                  politicadeprivacidadplantilla.com
-                </a>
-                .
-              </p>
-            </footer>
           </div>
         </article>
       </div>
