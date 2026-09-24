@@ -1,4 +1,4 @@
-import { getSortedPostsData, getAllTags } from '../lib/posts';
+import { getSortedPostsData, getAllTags, getTagSlug } from '../lib/posts';
 
 const SITE_URL = 'https://jotaedra.com';
 
@@ -30,7 +30,7 @@ export default function sitemap() {
       priority: 0.8,
     })),
     ...tags.map((tag) => ({
-      url: `${SITE_URL}/tags/${encodeURIComponent(tag)}`,
+      url: `${SITE_URL}/tags/${getTagSlug(tag)}`,
       lastModified: now,
       changeFrequency: 'weekly',
       priority: 0.5,

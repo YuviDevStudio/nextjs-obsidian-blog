@@ -1,31 +1,38 @@
 import PostsList from '../../components/postsList';
 import SearchBox from '../../components/search-box';
-import { getPostsByTag, getAllTags, getSearchIndex } from '../../../lib/posts';
+import { getPostsByTagSlug, getTagBySlug, getAllTags, getSearchIndex, getTagSlug } from '../../../lib/posts';
+import { notFound } from 'next/navigation';
 import Link from 'next/link';
 
 export async function generateStaticParams() {
   const tags = getAllTags();
   return tags.map(tag => ({
-    tag: tag,
+    tag: getTagSlug(tag),
   }));
 }
 
 export async function generateMetadata({ params }) {
-  const { tag } = await params;
-  const capitalizedTag = tag
-    ? tag.charAt(0).toUpperCase() + tag.slice(1)
-    : 'Tema';
+  const { tag: slug } = await params;
+  const tag = getTagBySlug(slug);
+  if (!tag) {
+    return { title: 'Tema no encontrado' };
+  }
+  const capitalizedTag = tag.charAt(0).toUpperCase() + tag.slice(1);
   return {
     title: `Artículos sobre #${capitalizedTag}`,
     alternates: {
-      canonical: `/tags/${encodeURIComponent(tag)}`,
+      canonical: `/tags/${getTagSlug(tag)}`,
     },
   };
 }
 
 export default async function TagPage({ params }) {
-  const { tag } = await params;
-  const posts = getPostsByTag(tag);
+  const { tag: slug } = await params;
+  const tag = getTagBySlug(slug);
+  if (!tag) {
+    notFound();
+  }
+  const posts = getPostsByTagSlug(slug);
   const allTags = getAllTags();
   const searchIndex = getSearchIndex();
   const capitalizedTag = tag.charAt(0).toUpperCase() + tag.slice(1);
@@ -64,7 +71,7 @@ export default async function TagPage({ params }) {
                 return (
                   <Link
                     key={t}
-                    href={`/tags/${encodeURIComponent(t)}`}
+                    href={`/tags/${getTagSlug(t)}`}
                     className={`px-2.5 py-1 text-xs rounded-lg border transition-all font-medium ${
                       isActive
                         ? 'border-indigo-500 bg-indigo-50 text-indigo-600 dark:border-sky-500 dark:bg-sky-500/10 dark:text-sky-400'
