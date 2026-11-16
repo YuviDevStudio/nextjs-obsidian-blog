@@ -4,6 +4,8 @@ import { getPostsByTagSlug, getTagBySlug, getAllTags, getSearchIndex, getTagSlug
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 
+export const runtime = 'edge';
+
 export async function generateStaticParams() {
   const tags = getAllTags();
   return tags.map(tag => ({

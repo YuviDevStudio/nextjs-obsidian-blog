@@ -12,6 +12,7 @@ import Link from 'next/link';
 import ResponsiveImage from '../../components/responsive-image';
 // Force static generation for post pages and provide static params at build time
 export const dynamic = 'force-static';
+export const runtime = 'edge';
 
 export async function generateMetadata({ params }) {
   const resolvedParams = await params;
