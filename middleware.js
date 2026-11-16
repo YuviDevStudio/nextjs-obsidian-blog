@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-export const runtime = 'edge';
+export const runtime = 'experimental-edge';
 
 /**
  * Next.js throws "failed to decode param" (HTTP 500) for any URL containing a
