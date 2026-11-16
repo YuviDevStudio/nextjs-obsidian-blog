@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
 
+export const runtime = 'edge';
+
 /**
  * Next.js throws "failed to decode param" (HTTP 500) for any URL containing a
  * malformed percent-escape such as /tags/%E0%A4%A or /%25. The error happens
@@ -23,7 +25,7 @@ function isMalformedPath(pathname) {
   }
 }
 
-export function proxy(request) {
+export function middleware(request) {
   if (isMalformedPath(request.nextUrl.pathname)) {
     return NextResponse.rewrite(new URL('/_not-found', request.url));
   }
