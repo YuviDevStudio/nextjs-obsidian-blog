@@ -1,3 +1,5 @@
+import CookieSettingsButton from '../components/cookie-settings-button';
+
 export const metadata = {
   title: 'Política de Privacidad',
   description:
@@ -18,7 +20,7 @@ export const metadata = {
   },
 };
 
-const LAST_UPDATED = '18 de septiembre de 2026';
+const LAST_UPDATED = '20 de octubre de 2026';
 
 const toc = [
   { id: 'responsable', num: '1', label: 'Responsable del tratamiento y contacto' },
@@ -65,7 +67,7 @@ export default function PoliticaDePrivacidadPage() {
     name: 'Política de Privacidad de JotaEDRA',
     url: 'https://jotaedra.com/politica-de-privacidad',
     inLanguage: 'es-ES',
-    dateModified: '2026-09-18',
+    dateModified: '2026-10-20',
     about: {
       '@type': 'WebSite',
       name: 'JotaEDRA',
@@ -279,24 +281,48 @@ export default function PoliticaDePrivacidadPage() {
               </SectionHeading>
               <ol className="mt-4 list-decimal pl-6 space-y-3 marker:font-bold marker:text-slate-700 dark:marker:text-slate-200">
                 <li>
-                  Nuestro sitio web utiliza cookies. Las cookies técnicamente necesarias se instalan
-                  sin necesidad de consentimiento previo, conforme al artículo 22 de la LSSI-CE.
+                  Este sitio utiliza almacenamiento técnico necesario (no requiere consentimiento
+                  previo, artículo 22.2 de la LSSI-CE): la preferencia de tema en{' '}
+                  <code className="rounded bg-slate-100 px-1 py-0.5 text-[13px] dark:bg-slate-800">
+                    localStorage['theme']
+                  </code>{' '}
+                  y tu elección de cookies en{' '}
+                  <code className="rounded bg-slate-100 px-1 py-0.5 text-[13px] dark:bg-slate-800">
+                    localStorage['jotaedra-cookie-consent']
+                  </code>
+                  .
                 </li>
                 <li>
-                  Para el resto de cookies, por ejemplo con fines de análisis o marketing,
-                  solicitamos previamente tu consentimiento mediante un banner de cookies conforme
-                  al artículo 6.1.a RGPD. Puedes modificar tu elección en cualquier momento desde
-                  la configuración de cookies.
+                  El resto de tecnologías solo se activan con tu consentimiento previo, conforme al
+                  artículo 6.1.a del RGPD, mediante el banner que aparece en tu primera visita.
+                </li>
+                <li>
+                  <strong className="font-semibold text-slate-800 dark:text-slate-100">
+                    Analítica:
+                  </strong>{' '}
+                  Google Analytics (Google Ireland Limited) mide visitas y lectura de artículos.
+                  Solo se carga si aceptas la categoría «Analítica».
+                </li>
+                <li>
+                  <strong className="font-semibold text-slate-800 dark:text-slate-100">
+                    Publicidad:
+                  </strong>{' '}
+                  Google AdSense (Google Ireland Limited) muestra anuncios y puede usar cookies
+                  propias o de terceros. Solo se carga si aceptas la categoría «Publicidad».
                 </li>
               </ol>
               <div
                 role="note"
                 className="mt-4 border-l-4 border-indigo-500/80 dark:border-sky-500/80 pl-4 py-3 italic bg-slate-50/60 dark:bg-slate-900/40 text-slate-500 dark:text-slate-400 rounded-r-xl text-[15px]"
               >
-                Este sitio utiliza Google Analytics y Google AdSense, que pueden emplear cookies
-                propias o de terceros con fines de medición y publicidad. Puedes retirar tu
-                consentimiento en cualquier momento desde tu navegador o la configuración de
-                cookies.
+                Puedes modificar o retirar tu consentimiento en cualquier momento con el siguiente
+                botón (o desde la configuración de tu navegador). Al retirarlo, la página se
+                recargará sin cargar Google Analytics ni Google AdSense.
+              </div>
+              <div className="mt-4">
+                <CookieSettingsButton className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl border border-indigo-200 bg-indigo-50 px-4 py-2 text-sm font-bold text-indigo-700 transition-colors hover:bg-indigo-100 dark:border-sky-500/30 dark:bg-sky-500/10 dark:text-sky-300 dark:hover:bg-sky-500/20">
+                  Configuración de cookies
+                </CookieSettingsButton>
               </div>
             </section>
 
@@ -395,9 +421,11 @@ export default function PoliticaDePrivacidadPage() {
                 </li>
                 <li>
                   En tu próxima visita a jotaedra.com se aplicará la nueva política de privacidad.
-                  La fecha de la última actualización aparece al final de esta página.
                 </li>
               </ol>
+              <p className="mt-4 text-sm font-medium text-slate-500 dark:text-slate-400">
+                Última actualización: {LAST_UPDATED}.
+              </p>
             </section>
 
             {/* Contact CTA */}

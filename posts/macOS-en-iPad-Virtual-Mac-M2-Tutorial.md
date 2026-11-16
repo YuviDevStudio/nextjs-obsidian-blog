@@ -5,7 +5,7 @@ date: 2026-09-16
 tags: [apple, ipad, macos, macos en ipad, virtual mac, ipad m1 m2, jailbreak, tecnologia]
 keywords: ["macOS en iPad", "instalar macOS en iPad", "Virtual Mac iPad", "macOS 27 en iPad", "macOS Golden Gate iPad", "tutorial VirtualMacOniPad", "jailbreak iPad M1 M2", "Xcode en iPad"]
 categories: [Tecnología, Apple]
-featured_image: https://github.com/nfzerox/VirtualMacOniPad/raw/main/VirtualMac/screenshots/VirtualMac.png
+featured_image: /posts/images/virtual-mac-ipad-portada.webp
 alt: "iPad Pro con chip Apple Silicon ejecutando macOS en ventana de Virtual Mac con monitor externo"
 ---
 
@@ -15,7 +15,7 @@ Suena imposible, pero ya se puede hacer: un iPad con chip M1 o M2 corriendo al m
 
 Yo llevo años escuchando lo mismo: el iPad tiene potencia de sobra, pero Apple no lo deja ser un Mac. Pues un proyecto de la comunidad lo logró por su cuenta. Te cuento qué hay detrás, qué necesitas y cómo se hace.
 
-![iPad Pro con Apple Silicon ejecutando macOS en Virtual Mac con aceleración Metal](https://github.com/nfzerox/VirtualMacOniPad/raw/main/VirtualMac/screenshots/VirtualMac.png)
+![iPad Pro con Apple Silicon ejecutando macOS en Virtual Mac con aceleración Metal](/posts/images/virtual-mac-ipad-portada.webp)
 
 ## ¿Qué es Virtual Mac y qué hace exactamente?
 
@@ -56,7 +56,7 @@ Virtual Mac solo funciona en un grupo muy cerrado de dispositivos:
 
 Otros dos detalles clave: no puedes iniciar sesión con tu Apple ID o iCloud dentro de la máquina virtual. Tienes que elegir "Configurar más tarde". Y macOS 15 Sequoia es hoy la opción más estable. macOS 26 Tahoe y macOS 27 Golden Gate funcionan, pero son experimentales.
 
-![Pantalla de configuración de Virtual Mac para crear una máquina virtual de macOS en iPad](https://github.com/nfzerox/VirtualMacOniPad/raw/main/VirtualMac/screenshots/VirtualMac_Configuration.png)
+![Pantalla de configuración de Virtual Mac para crear una máquina virtual de macOS en iPad](/posts/images/virtual-mac-ipad-configuracion.webp)
 
 ## Tutorial: cómo instalar macOS en iPad con Virtual Mac
 
@@ -98,7 +98,7 @@ Dos ajustes que te salvan la vida: activa inicio de sesión automático en macOS
 
 Para monitor externo, conecta por USB-C o Thunderbolt y elige resolución HiDPI. Con un hub bueno, mouse y teclado, se siente sorprendentemente cercano a un Mac mini.
 
-![macOS Sonoma corriendo dentro de un iPad con Virtual Mac y apps de escritorio abiertas](https://github.com/nfzerox/VirtualMacOniPad/raw/main/VirtualMac/screenshots/VirtualMac_macOS.png)
+![macOS corriendo dentro de un iPad con Virtual Mac y apps de escritorio abiertas](/posts/images/virtual-mac-ipad-macos.webp)
 
 ## ¿Y qué tal va en el día a día?
 

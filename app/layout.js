@@ -3,9 +3,9 @@ import Navbar from './components/navbar';
 import SubNavbar from './components/sub-navbar';
 import Footer from './components/footer';
 import { ThemeProvider } from './components/theme-provider';
+import CookieConsent from './components/cookie-consent';
 import { getAllTags, getSearchIndex } from '../lib/posts';
 import { Inter, Outfit } from 'next/font/google';
-import { GoogleAnalytics } from '@next/third-parties/google';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -63,14 +63,9 @@ export default function RootLayout({ children }) {
       className={`${inter.variable} ${outfit.variable}`}
     >
       <head>
-        {/* AdSense verification + auto-ads: plain tags (not next/script) so the
-            exact snippets ship verbatim in SSR HTML for Google's crawler. */}
+        {/* Ownership verification. The AdSense/GA scripts themselves are loaded
+            by CookieConsent only after the visitor opts in. */}
         <meta name="google-adsense-account" content="ca-pub-9956672685720320" />
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9956672685720320"
-          crossOrigin="anonymous"
-        />
       </head>
       <body>
         {/* Inline before interactive UI so dark class is set before first paint when possible */}
@@ -83,7 +78,7 @@ export default function RootLayout({ children }) {
           </main>
           <Footer />
         </ThemeProvider>
-        <GoogleAnalytics gaId="G-9K841MNERH" />
+        <CookieConsent />
       </body>
     </html>
   );

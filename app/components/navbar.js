@@ -227,6 +227,18 @@ export default function Navbar({ searchPosts = [] }) {
               </li>
               <li>
                 <Link
+                  href="/acerca-de"
+                  onClick={toggleMenu}
+                  className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-indigo-600 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-sky-400 transition-colors"
+                >
+                  <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                  Acerca de
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/politica-de-privacidad"
                   onClick={toggleMenu}
                   className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-indigo-600 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-sky-400 transition-colors"

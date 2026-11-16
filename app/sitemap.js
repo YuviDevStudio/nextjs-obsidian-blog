@@ -16,6 +16,12 @@ export default function sitemap() {
       priority: 1,
     },
     {
+      url: `${SITE_URL}/acerca-de`,
+      lastModified: new Date('2026-09-29'),
+      changeFrequency: 'yearly',
+      priority: 0.4,
+    },
+    {
       url: `${SITE_URL}/politica-de-privacidad`,
       lastModified: new Date('2026-09-18'),
       changeFrequency: 'yearly',

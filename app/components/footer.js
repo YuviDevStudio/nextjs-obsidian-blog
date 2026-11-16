@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import CookieSettingsButton from './cookie-settings-button';
 
 const socialLinks = [
   {
@@ -126,16 +127,24 @@ export default function Footer() {
           >
             Política de Privacidad
           </Link>
+          <CookieSettingsButton className="hover:underline underline-offset-4" />
         </nav>
 
         <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400 dark:text-slate-500">
           <div className="flex items-center gap-4">
+            <Link
+              href="/acerca-de"
+              className="hover:text-indigo-600 dark:hover:text-sky-400 hover:underline underline-offset-2 transition-colors font-medium"
+            >
+              Acerca de
+            </Link>
             <Link
               href="/politica-de-privacidad"
               className="hover:text-indigo-600 dark:hover:text-sky-400 hover:underline underline-offset-2 transition-colors font-medium"
             >
               Política de Privacidad
             </Link>
+            <CookieSettingsButton className="hover:text-indigo-600 dark:hover:text-sky-400 hover:underline underline-offset-2 transition-colors font-medium" />
           </div>
           <p>
             © {year} <span>J</span>

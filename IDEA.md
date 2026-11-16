@@ -1,0 +1,1 @@
+Based on Next.js and Markdown files, this is a tech blog talking about a lot of diferent things like fitnes, health, technology, AI, gaming, and almost any other topic in trending. Hosted in cloudflare under the domain jotaedra.com. The plan is to make it grow and produce money!

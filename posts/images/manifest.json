@@ -1,0 +1,1012 @@
+{
+  "FOTO-BLOG-MAGNESIO.webp": {
+    "baseWidth": 900,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 900,
+      "1280": 900
+    },
+    "version": "f32082de"
+  },
+  "adn-photo.webp": {
+    "baseWidth": 1600,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "42a52bba"
+  },
+  "analisis-llms-agentes.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "78659936"
+  },
+  "analisis-llms-mapa.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "0189253a"
+  },
+  "analisis-llms-portada.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "f654762d"
+  },
+  "analisis-semantico-multimodales.webp": {
+    "baseWidth": 1600,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "2ff2a140"
+  },
+  "atractivo-holistico.webp": {
+    "baseWidth": 1200,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1200
+    },
+    "version": "bed47b21"
+  },
+  "atractivo-piel.webp": {
+    "baseWidth": 1067,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1067
+    },
+    "version": "093e21ec"
+  },
+  "atractivo-portada.webp": {
+    "baseWidth": 1067,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1067
+    },
+    "version": "4ce9c799"
+  },
+  "atractivo-postura.webp": {
+    "baseWidth": 1067,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1067
+    },
+    "version": "4ce9c799"
+  },
+  "calibrar-mando-compatibles.webp": {
+    "baseWidth": 1376,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "b0b758e0"
+  },
+  "calibrar-mando-pasos.webp": {
+    "baseWidth": 1376,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "8820ec06"
+  },
+  "calibrar-mando-portada.webp": {
+    "baseWidth": 1280,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "b6a3f6c3"
+  },
+  "calibrar-mando-stickdrift.webp": {
+    "baseWidth": 1376,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "422c21cc"
+  },
+  "catl-bateria-bmw-i3.webp": {
+    "baseWidth": 1600,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "d2eb6036"
+  },
+  "catl-bateria-solido-estado.webp": {
+    "baseWidth": 796,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 796,
+      "1280": 796
+    },
+    "version": "330e3054"
+  },
+  "catl-baterias-portada.webp": {
+    "baseWidth": 1200,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1200
+    },
+    "version": "3ca83b37"
+  },
+  "catl-coche-electrico-carga.webp": {
+    "baseWidth": 1301,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "cbaf92a5"
+  },
+  "chatgpt56-arquitectura.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "de450806"
+  },
+  "chatgpt56-comparativa.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "b768d11a"
+  },
+  "chatgpt56-multimodal.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "c569a973"
+  },
+  "chatgpt56-nueva-era-portada.webp": {
+    "baseWidth": 1600,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "659bd2c3"
+  },
+  "chatgpt56-revolucion-portada.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "bbae770e"
+  },
+  "dog_image_1.webp": {
+    "baseWidth": 863,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 863,
+      "1280": 863
+    },
+    "version": "f62cb603"
+  },
+  "dog_image_2.webp": {
+    "baseWidth": 1000,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1000
+    },
+    "version": "f1e88e80"
+  },
+  "dog_image_3.webp": {
+    "baseWidth": 900,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 900,
+      "1280": 900
+    },
+    "version": "5552c8ce"
+  },
+  "dog_image_4.webp": {
+    "baseWidth": 832,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 832,
+      "1280": 832
+    },
+    "version": "db5d4c2e"
+  },
+  "evolucion-arquitectonico-llm.webp": {
+    "baseWidth": 1600,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "45ba8e54"
+  },
+  "foto-entrenamiento.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "6709c6f5"
+  },
+  "frog-toilet.webp": {
+    "baseWidth": 1200,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1200
+    },
+    "version": "f7494e07"
+  },
+  "gemini37-benchmarks.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "34cae121"
+  },
+  "gemini37-portada.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "f654762d"
+  },
+  "gemini37-precios.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "df4e74a7"
+  },
+  "glm53-ciberseguridad.webp": {
+    "baseWidth": 1280,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "87bc0b02"
+  },
+  "glm53-codigo.webp": {
+    "baseWidth": 1280,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "80687f5a"
+  },
+  "glm53-datacenter.webp": {
+    "baseWidth": 1280,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "b5f25839"
+  },
+  "glm53-portada.webp": {
+    "baseWidth": 500,
+    "variants": {
+      "480": 480,
+      "640": 500,
+      "960": 500,
+      "1280": 500
+    },
+    "version": "05305f47"
+  },
+  "grok46-arquitectura.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "7188aa1a"
+  },
+  "grok46-benchmarks.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "f542503c"
+  },
+  "grok46-portada.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "ef14d879"
+  },
+  "healthy-old-man.webp": {
+    "baseWidth": 1280,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "1408a1dc"
+  },
+  "heart.webp": {
+    "baseWidth": 1000,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1000
+    },
+    "version": "c9382aed"
+  },
+  "hipertrofia-intensidad.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "be9851b9"
+  },
+  "hipertrofia-volumen.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "36381ca7"
+  },
+  "infografia-deficit-calorico.webp": {
+    "baseWidth": 1200,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1200
+    },
+    "version": "f7bf9c75"
+  },
+  "infografia-entrenamiento.webp": {
+    "baseWidth": 1200,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1200
+    },
+    "version": "65e22c10"
+  },
+  "infografia-meseta-metabolica.webp": {
+    "baseWidth": 1200,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1200
+    },
+    "version": "4a1f835b"
+  },
+  "infografia-proteina.webp": {
+    "baseWidth": 1200,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1200
+    },
+    "version": "aa926765"
+  },
+  "jev-api-codigo.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "2b52653f"
+  },
+  "jev-confianza-umbral.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "fb63b0bc"
+  },
+  "jev-decisiones.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "e7c2f9d9"
+  },
+  "jev-patron-cascada.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "3ba96eb6"
+  },
+  "jev-portada.webp": {
+    "baseWidth": 1280,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "aee6a691"
+  },
+  "jev-precios.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "93deaab4"
+  },
+  "jev-sdk-javascript.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "d2e14828"
+  },
+  "jev-tipos-pregunta.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "093629e6"
+  },
+  "macmini-m6-portada.webp": {
+    "baseWidth": 1600,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "3caebc78"
+  },
+  "macmini-m6-productividad.webp": {
+    "baseWidth": 1600,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "6432949a"
+  },
+  "macmini-m6-puertos.webp": {
+    "baseWidth": 1600,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "b87449bb"
+  },
+  "magnesio-cardiovascular.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "da32807d"
+  },
+  "magnesio-longevidad.webp": {
+    "baseWidth": 1376,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "26812833"
+  },
+  "magnesio-portada.webp": {
+    "baseWidth": 1376,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "ec53e99a"
+  },
+  "magnesio-tipos-suplemento.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "0e449188"
+  },
+  "mapa-competencia-ia.webp": {
+    "baseWidth": 1600,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "f42c93a2"
+  },
+  "matrix-comparativa-modelos.webp": {
+    "baseWidth": 1600,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "040d17d2"
+  },
+  "mcconaughey-joel-casting.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "a268d10b"
+  },
+  "mcconaughey-joel-portada.webp": {
+    "baseWidth": 1280,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "cc775a70"
+  },
+  "mcconaughey-joel-razones.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "c752b02a"
+  },
+  "obsidian-logo.webp": {
+    "baseWidth": 1080,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1080
+    },
+    "version": "a5349713"
+  },
+  "ox-alpha-codigo.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "de450806"
+  },
+  "ox-alpha-datacenter.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "f542503c"
+  },
+  "ox-alpha-portada.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "e018e0ee"
+  },
+  "ox-alpha-razonamiento.webp": {
+    "baseWidth": 1280,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "037add4a"
+  },
+  "personalizacion-llm.webp": {
+    "baseWidth": 1600,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "731c03d6"
+  },
+  "pills.webp": {
+    "baseWidth": 1024,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1024
+    },
+    "version": "c9192819"
+  },
+  "profile.webp": {
+    "baseWidth": 400,
+    "variants": {
+      "480": 400,
+      "640": 400,
+      "960": 400,
+      "1280": 400
+    },
+    "version": "535726be"
+  },
+  "qwen38-benchmarks.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "b656ea5f"
+  },
+  "qwen38-multimodal.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "7b57887c"
+  },
+  "qwen38-portada.webp": {
+    "baseWidth": 1280,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "0f0af249"
+  },
+  "recomposicion-entrenamiento.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "d742d13a"
+  },
+  "recomposicion-metabolismo.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "d917a152"
+  },
+  "recomposicion-nutricion.webp": {
+    "baseWidth": 1058,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1058
+    },
+    "version": "b2d55e4f"
+  },
+  "recomposicion-portada.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "ac9e7b2d"
+  },
+  "tabla-comparacion-llms.webp": {
+    "baseWidth": 1600,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "ba9aebcd"
+  },
+  "tadalafilo-cardiovascular.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "fa252360"
+  },
+  "tadalafilo-cerebro.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "0a52e318"
+  },
+  "tadalafilo-portada.webp": {
+    "baseWidth": 1400,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "0e449188"
+  },
+  "test-image-blog.webp": {
+    "baseWidth": 1000,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1000
+    },
+    "version": "32ba865c"
+  },
+  "test_image_1.webp": {
+    "baseWidth": 800,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 800,
+      "1280": 800
+    },
+    "version": "e8e1458f"
+  },
+  "test_image_2.webp": {
+    "baseWidth": 976,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 976
+    },
+    "version": "e5d83669"
+  },
+  "vera-rubin-orbit-cohete-falcon9.webp": {
+    "baseWidth": 1600,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "aabe3e40"
+  },
+  "vera-rubin-orbit-datacenter.webp": {
+    "baseWidth": 1200,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1200
+    },
+    "version": "8e806295"
+  },
+  "vera-rubin-orbit-estacion-iss.webp": {
+    "baseWidth": 1600,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "baf417ca"
+  },
+  "vera-rubin-orbit-tierra.webp": {
+    "baseWidth": 1599,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "c4fbf689"
+  },
+  "virtual-mac-ipad-configuracion.webp": {
+    "baseWidth": 1600,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "7c4c7156"
+  },
+  "virtual-mac-ipad-macos.webp": {
+    "baseWidth": 1600,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "40ae4c9b"
+  },
+  "virtual-mac-ipad-portada.webp": {
+    "baseWidth": 1600,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "d087f1f0"
+  },
+  "wifi8-6g.webp": {
+    "baseWidth": 1200,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1200
+    },
+    "version": "73425e72"
+  },
+  "wifi8-access-points.webp": {
+    "baseWidth": 1600,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "34a58835"
+  },
+  "wifi8-portada.webp": {
+    "baseWidth": 1600,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "271748f0"
+  },
+  "wifi8-router.webp": {
+    "baseWidth": 1600,
+    "variants": {
+      "480": 480,
+      "640": 640,
+      "960": 960,
+      "1280": 1280
+    },
+    "version": "6c4a51c0"
+  }
+}
